@@ -29,7 +29,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.dataLabel.text = [self.dataObject description];
 }
 
+- (IBAction)nextButtonClicked:(UIButton *)sender {
+}
 @end

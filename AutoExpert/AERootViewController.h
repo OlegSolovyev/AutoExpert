@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AERootViewController : UIViewController <UIPageViewControllerDelegate>
+@interface AERootViewController : UIViewController
 
-@property (strong, nonatomic) UIPageViewController *pageViewController;
+@property (weak, nonatomic) IBOutlet UIPickerView *modelPickerView;
+@property (weak, nonatomic) IBOutlet UIPickerView *yearPickerView;
 
 @end
