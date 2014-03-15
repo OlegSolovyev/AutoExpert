@@ -15,7 +15,6 @@
 		7FAF6C9E189F9EBA00342F14 /* AEAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FAF6C9D189F9EBA00342F14 /* AEAppDelegate.m */; };
 		7FAF6CA1189F9EBA00342F14 /* AERootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FAF6CA0189F9EBA00342F14 /* AERootViewController.m */; };
 		7FAF6CA4189F9EBA00342F14 /* AEDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FAF6CA3189F9EBA00342F14 /* AEDataViewController.m */; };
-		7FAF6CA7189F9EBA00342F14 /* AEModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FAF6CA6189F9EBA00342F14 /* AEModelController.m */; };
 		7FAF6CAA189F9EBA00342F14 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FAF6CA8189F9EBA00342F14 /* Main_iPhone.storyboard */; };
 		7FAF6CAD189F9EBA00342F14 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FAF6CAB189F9EBA00342F14 /* Main_iPad.storyboard */; };
 		7FAF6CAF189F9EBA00342F14 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FAF6CAE189F9EBA00342F14 /* Images.xcassets */; };
@@ -53,8 +52,6 @@
 		7FAF6CA0189F9EBA00342F14 /* AERootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AERootViewController.m; sourceTree = "<group>"; };
 		7FAF6CA2189F9EBA00342F14 /* AEDataViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEDataViewController.h; sourceTree = "<group>"; };
 		7FAF6CA3189F9EBA00342F14 /* AEDataViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEDataViewController.m; sourceTree = "<group>"; };
-		7FAF6CA5189F9EBA00342F14 /* AEModelController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEModelController.h; sourceTree = "<group>"; };
-		7FAF6CA6189F9EBA00342F14 /* AEModelController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEModelController.m; sourceTree = "<group>"; };
 		7FAF6CA9189F9EBA00342F14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		7FAF6CAC189F9EBA00342F14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		7FAF6CAE189F9EBA00342F14 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -133,8 +130,6 @@
 				7FAF6CA0189F9EBA00342F14 /* AERootViewController.m */,
 				7FAF6CA2189F9EBA00342F14 /* AEDataViewController.h */,
 				7FAF6CA3189F9EBA00342F14 /* AEDataViewController.m */,
-				7FAF6CA5189F9EBA00342F14 /* AEModelController.h */,
-				7FAF6CA6189F9EBA00342F14 /* AEModelController.m */,
 				7FAF6CA8189F9EBA00342F14 /* Main_iPhone.storyboard */,
 				7FAF6CAB189F9EBA00342F14 /* Main_iPad.storyboard */,
 				7FAF6CAE189F9EBA00342F14 /* Images.xcassets */,
@@ -287,7 +282,6 @@
 			files = (
 				7FAF6CA4189F9EBA00342F14 /* AEDataViewController.m in Sources */,
 				7FAF6CA1189F9EBA00342F14 /* AERootViewController.m in Sources */,
-				7FAF6CA7189F9EBA00342F14 /* AEModelController.m in Sources */,
 				7FAF6C9E189F9EBA00342F14 /* AEAppDelegate.m in Sources */,
 				7FAF6CD4189FA10200342F14 /* AECar.m in Sources */,
 				7FAF6C9A189F9EBA00342F14 /* main.m in Sources */,
@@ -512,6 +506,7 @@
 				7FAF6CC7189F9EBB00342F14 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7FAF6CC8189F9EBB00342F14 /* Build configuration list for PBXNativeTarget "AutoExpertTests" */ = {
 			isa = XCConfigurationList;
@@ -520,6 +515,7 @@
 				7FAF6CCA189F9EBB00342F14 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
