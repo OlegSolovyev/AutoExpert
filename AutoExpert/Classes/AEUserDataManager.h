@@ -15,7 +15,8 @@
 + (void)loadData;
 + (void)saveData;
 
-
+- (void)setSelectedCarByName:(NSString *)name year:(int)year;
+@property (nonatomic, retain) AECar *selectedCar;
 
 @end
 

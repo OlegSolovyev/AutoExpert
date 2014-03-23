@@ -25,6 +25,7 @@
 		7FAF6CC2189F9EBA00342F14 /* AutoExpertTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FAF6CC1189F9EBA00342F14 /* AutoExpertTests.m */; };
 		7FAF6CD4189FA10200342F14 /* AECar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FAF6CD3189FA10200342F14 /* AECar.m */; };
 		7FAF6CD7189FA14400342F14 /* AEUserDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FAF6CD6189FA14400342F14 /* AEUserDataManager.m */; };
+		7FB74BB318D738EB005FF76C /* AECarsDataBaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB74BB218D738EB005FF76C /* AECarsDataBaseManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,8 @@
 		7FAF6CD3189FA10200342F14 /* AECar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AECar.m; sourceTree = "<group>"; };
 		7FAF6CD5189FA14400342F14 /* AEUserDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AEUserDataManager.h; sourceTree = "<group>"; };
 		7FAF6CD6189FA14400342F14 /* AEUserDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AEUserDataManager.m; sourceTree = "<group>"; };
+		7FB74BB118D738EB005FF76C /* AECarsDataBaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AECarsDataBaseManager.h; sourceTree = "<group>"; };
+		7FB74BB218D738EB005FF76C /* AECarsDataBaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AECarsDataBaseManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +177,8 @@
 				7FAF6CD6189FA14400342F14 /* AEUserDataManager.m */,
 				7FAF6CD2189FA10200342F14 /* AECar.h */,
 				7FAF6CD3189FA10200342F14 /* AECar.m */,
+				7FB74BB118D738EB005FF76C /* AECarsDataBaseManager.h */,
+				7FB74BB218D738EB005FF76C /* AECarsDataBaseManager.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -223,7 +228,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = AE;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = Opensoft;
 				TargetAttributes = {
 					7FAF6C89189F9EBA00342F14 = {
@@ -281,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FAF6CA4189F9EBA00342F14 /* AEDataViewController.m in Sources */,
+				7FB74BB318D738EB005FF76C /* AECarsDataBaseManager.m in Sources */,
 				7FAF6CA1189F9EBA00342F14 /* AERootViewController.m in Sources */,
 				7FAF6C9E189F9EBA00342F14 /* AEAppDelegate.m in Sources */,
 				7FAF6CD4189FA10200342F14 /* AECar.m in Sources */,
@@ -347,7 +353,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -387,7 +392,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -448,7 +452,6 @@
 		7FAF6CC9189F9EBB00342F14 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AutoExpert.app/AutoExpert";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -471,7 +474,6 @@
 		7FAF6CCA189F9EBB00342F14 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AutoExpert.app/AutoExpert";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",

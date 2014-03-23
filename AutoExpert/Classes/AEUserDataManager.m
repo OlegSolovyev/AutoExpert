@@ -12,6 +12,29 @@ static AEUserDataManager *sharedDataManager = nil;
 
 @implementation AEUserDataManager
 
+- (id)init {
+    if(sharedDataManager){
+        return sharedDataManager;
+    } else {
+        if(self = [super init]){
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            if ([defaults objectForKey:@"launchCounter"]){
+                [[AEUserDataManager sharedManager] loadData];
+                [defaults setObject:[NSString stringWithFormat:@"%d", [[NSString stringWithFormat:@"%@",[defaults objectForKey:@"launchСounter" ]] intValue] + 1] forKey:@"launchCounter"];
+                
+            } else {
+                [AEUserDataManager setDefaultData];
+                
+                [[AEUserDataManager sharedManager] loadData];
+            }
+            
+        }
+    }
+    
+    sharedDataManager = self;
+    return sharedDataManager;
+}
+
 + (id)sharedManager {
     if(sharedDataManager == nil)
         sharedDataManager = [[AEUserDataManager alloc] init];
@@ -43,36 +66,18 @@ static AEUserDataManager *sharedDataManager = nil;
 }
 
 + (void)loadData{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 //    self.maxBonusScore = [[defaults objectForKey:@"maxBonusScore"] intValue];
 
     
     NSLog(@"Stats loaded");
 }
 
-
-- (id)init {
-    if(sharedDataManager){
-        return sharedDataManager;
-    } else {
-        if(self = [super init]){
-            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            if ([defaults objectForKey:@"launchCounter"]){
-                [[AEUserDataManager sharedManager] loadData];
-                [defaults setObject:[NSString stringWithFormat:@"%d", [[NSString stringWithFormat:@"%@",[defaults objectForKey:@"launchСounter" ]] intValue] + 1] forKey:@"launchCounter"];
-                
-            } else {
-                [AEUserDataManager setDefaultData];
-                
-                [[AEUserDataManager sharedManager] loadData];
-            }
-            
-        }
-    }
+- (void)setSelectedCarByName:(NSString *)name year:(int)year{
     
-    sharedDataManager = self;
-    return sharedDataManager;
 }
+
+
 
 
 @end

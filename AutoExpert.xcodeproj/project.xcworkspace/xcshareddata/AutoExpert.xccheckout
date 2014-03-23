@@ -5,19 +5,19 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>3C84B4FE-DF6D-417A-B7DF-46A45F8158E3</string>
+	<string>06C1A272-6F4F-499A-AD9E-FC31E36D2344</string>
 	<key>IDESourceControlProjectName</key>
 	<string>AutoExpert</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>AC6C7977-BAB9-4DAD-8CC4-68A3A631447F</key>
+		<key>8C10A617-3B38-413D-9BC7-F8983CE157B6</key>
 		<string>https://github.com/OlegSolovyev/AutoExpert.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>AutoExpert.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>AC6C7977-BAB9-4DAD-8CC4-68A3A631447F</key>
+		<key>8C10A617-3B38-413D-9BC7-F8983CE157B6</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -25,14 +25,14 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>AC6C7977-BAB9-4DAD-8CC4-68A3A631447F</string>
+	<string>8C10A617-3B38-413D-9BC7-F8983CE157B6</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>AC6C7977-BAB9-4DAD-8CC4-68A3A631447F</string>
+			<string>8C10A617-3B38-413D-9BC7-F8983CE157B6</string>
 			<key>IDESourceControlWCCName</key>
 			<string>AutoExpert</string>
 		</dict>

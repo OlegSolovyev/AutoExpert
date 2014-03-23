@@ -12,4 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *questionLabel;
 
+@property (nonatomic, retain) NSMutableArray *answers;
+
 @end
