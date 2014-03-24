@@ -12,6 +12,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *questionLabel;
 
-@property (nonatomic, retain) NSMutableArray *answers;
+@property (nonatomic, strong) NSMutableArray *answers;
+
+@property (nonatomic) int selectCounter;
 
 @end

@@ -18,9 +18,12 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-     self.answers = [NSMutableArray arrayWithObjects:@"Двигатель", @"Зажигание", @"КПП", @"Электрика", @"Свет", @"Тормоза", @"Сцепление", @"Акселерация", nil];
+     self.answers = [[NSMutableArray alloc] init];
+    for(int i = 0; i < 10; ++i){
+        [self.answers addObject:[NSString stringWithFormat:@"Симптом %d", i]];
+    }
     [self.questionLabel setText:@"Выберите неисправность"];
-    
+    self.selectCounter = 0;
 }
 
 - (void)didReceiveMemoryWarning
@@ -51,6 +54,29 @@
     
     cell.textLabel.text = [self.answers objectAtIndex:indexPath.row];
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    self.selectCounter++;
+    if(self.selectCounter < 10){
+        int num = indexPath.row;
+        
+        NSMutableArray *array = [[NSMutableArray alloc] init];
+        for(NSString *str in self.answers){
+            NSString *string = [str stringByAppendingString:[NSString stringWithFormat: @"-%d", num]];
+            [array addObject:string];
+        }
+        self.answers = array;
+        [tableView reloadData];
+    } else{
+        [tableView removeFromSuperview];
+        self.questionLabel.frame = CGRectMake([UIApplication sharedApplication].keyWindow.bounds.size.width / 2 - self.questionLabel.frame.size.width / 2, [UIApplication sharedApplication].keyWindow.bounds.size.height / 2, self.questionLabel.frame.size.width, self.questionLabel.frame.size.height);
+        NSString *str = [[self.answers objectAtIndex:indexPath.row] stringByAppendingString:[NSString stringWithFormat: @"-%d", indexPath.row]];
+        NSString *resString = [str substringWithRange:NSMakeRange(8, str.length - 8)];
+        [self.questionLabel setText:resString];
+        self.navigationItem.title = @"Ответы";
+    }
+    
 }
 
 - (IBAction)nextButtonClicked:(UIButton *)sender {
