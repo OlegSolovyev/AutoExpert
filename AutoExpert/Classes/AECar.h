@@ -28,14 +28,15 @@ typedef enum{
 typedef enum{
     carburetor,
     injector
-} injection;
+} InjectionType;
 
 
 
 @interface AECar : NSObject
 
-@property (nonatomic) CarModel model;
+@property (nonatomic) NSString *model;
 @property (nonatomic) EngineType engine;
+@property (nonatomic) InjectionType injectionType;
 @property (nonatomic) TranmissionType transmission;
 @property (nonatomic) int year;
 @property (nonatomic) int distance;
