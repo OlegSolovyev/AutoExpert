@@ -15,9 +15,12 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    self.modelsArray = [[NSMutableArray alloc] initWithObjects:@"ВАЗ 2101", @"ВАЗ 2102", @"ВАЗ 2103", @"ВАЗ 2104", @"ВАЗ 2105", @"ВАЗ 2106", @"ВАЗ 2107", @"ВАЗ 2108", @"ВАЗ 2109", @"ВАЗ 2109", @"ВАЗ 2110", nil];
+    self.modelsArray = [[NSMutableArray alloc] init];
+    for(int i = 0; i < NUMBER_OF_MODELS; ++i){
+        [self.modelsArray addObject:[AECarsDataBaseManager stringForModel:i]];
+    }
     self.yearsArray = [[NSMutableArray alloc] init];
-    for (int i = 2014; i >= 1900; --i){
+    for (int i = [AECarsDataBaseManager maxYearForModel:0]; i >= [AECarsDataBaseManager minYearForModel:0]; --i){
         [self.yearsArray addObject:[NSString stringWithFormat:@"%d", i]];
     }
     [self.scrollView setScrollEnabled:TRUE];
@@ -68,7 +71,13 @@
         [[[AEUserDataManager sharedManager] currentCar] setYear:self.selectedYear];
     } else{
         self.selectedCar = [self.modelsArray objectAtIndex:row];
-        [[[AEUserDataManager sharedManager] currentCar] setModel:self.selectedCar];
+        [[[AEUserDataManager sharedManager] currentCar] setStringModel:self.selectedCar];
+        [[[AEUserDataManager sharedManager] currentCar] setModel:[AECarsDataBaseManager modelForString: self.selectedCar]];
+        [self.yearsArray removeAllObjects];
+        for (int i = [AECarsDataBaseManager maxYearForModel:[AECarsDataBaseManager modelForString:self.selectedCar]]; i >= [AECarsDataBaseManager minYearForModel:[AECarsDataBaseManager modelForString:self.selectedCar]]; --i){
+            [self.yearsArray addObject:[NSString stringWithFormat:@"%d", i]];
+        }
+        [self.yearPickerView reloadAllComponents];
     }
 }
 

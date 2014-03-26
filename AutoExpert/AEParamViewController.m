@@ -8,6 +8,7 @@
 
 #import "AEParamViewController.h"
 #import "AEUserDataManager.h"
+#import "AECarsDataBaseManager.h"
 
 #define KPP_TEXT @"РКПП"
 #define AKPP_TEXT @"АКПП"
@@ -26,6 +27,25 @@
     self.scrollView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     self.tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
     [self.scrollView addGestureRecognizer:self.tapRecognizer];
+    NSLog(@"Current car: %@", [[AEUserDataManager sharedManager] currentCar].stringModel);
+    if([AECarsDataBaseManager modelHasAutomaticTransmission:[[AEUserDataManager sharedManager] currentCar].model]
+       && [AECarsDataBaseManager modelHasManualTransmission:[[AEUserDataManager sharedManager] currentCar].model]){
+        [self.kppSwitch setEnabled:YES];
+    } else {
+        [self.kppSwitch setEnabled:NO];
+    }
+    if([AECarsDataBaseManager modelHasDieselEngine:[[AEUserDataManager sharedManager] currentCar].model]
+       && [AECarsDataBaseManager modelHasGasEngine:[[AEUserDataManager sharedManager] currentCar].model]){
+        [self.engineSwitch setEnabled:YES];
+    } else {
+        [self.engineSwitch setEnabled:NO];
+    }
+    if([AECarsDataBaseManager modelHasInjector:[[AEUserDataManager sharedManager] currentCar].model]
+       && [AECarsDataBaseManager modelHasCarburetor:[[AEUserDataManager sharedManager] currentCar].model]){
+        [self.injectorSwitch setEnabled:YES];
+    } else {
+        [self.injectorSwitch setEnabled:NO];
+    }
 }
 
 - (void)hideKeyboard{

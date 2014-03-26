@@ -10,12 +10,14 @@
 
 @implementation AECar
 
-- (id)initWithParameters:(NSString *)model
+- (id)initWithParameters:(NSString *)stringModel
+                   model:(CarModel)model
                  engine:(EngineType)engine
            transmission:(TranmissionType)transmission
                    year:(int)year
                distance:(int)distance{
     if(self = [super init]){
+        self.stringModel = stringModel;
         self.model = model;
         self.engine = engine;
         self.transmission = transmission;
