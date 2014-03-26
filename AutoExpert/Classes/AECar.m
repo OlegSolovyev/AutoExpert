@@ -10,7 +10,7 @@
 
 @implementation AECar
 
-- (id)initWithParameters:(CarModel)model
+- (id)initWithParameters:(NSString *)model
                  engine:(EngineType)engine
            transmission:(TranmissionType)transmission
                    year:(int)year

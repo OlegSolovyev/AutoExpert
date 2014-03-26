@@ -12,11 +12,11 @@
 @interface AEUserDataManager : NSObject
 
 + (id)sharedManager;
-+ (void)loadData;
+- (void)loadData;
 + (void)saveData;
 
 - (void)setSelectedCarByName:(NSString *)name year:(int)year;
-@property (nonatomic, retain) AECar *selectedCar;
+@property (nonatomic, retain) AECar *currentCar;
 
 @end
 

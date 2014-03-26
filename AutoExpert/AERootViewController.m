@@ -9,6 +9,7 @@
 #import "AERootViewController.h"
 #import "AEDataViewController.h"
 #import "AECarsDataBaseManager.h"
+#import "AEUserDataManager.h"
 
 @implementation AERootViewController
 
@@ -64,8 +65,10 @@
 {
     if([pickerView isEqual:self.yearPickerView]){
         self.selectedYear = [[self.yearsArray objectAtIndex:row] intValue];
+        [[[AEUserDataManager sharedManager] currentCar] setYear:self.selectedYear];
     } else{
         self.selectedCar = [self.modelsArray objectAtIndex:row];
+        [[[AEUserDataManager sharedManager] currentCar] setModel:self.selectedCar];
     }
 }
 
