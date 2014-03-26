@@ -33,18 +33,39 @@
         [self.kppSwitch setEnabled:YES];
     } else {
         [self.kppSwitch setEnabled:NO];
+        if([AECarsDataBaseManager modelHasAutomaticTransmission:[[AEUserDataManager sharedManager] currentCar].model]){
+            [self.kppLabel setText:AKPP_TEXT];
+            [self.kppSwitch setOn:NO];
+        } else{
+            [self.kppLabel setText:KPP_TEXT];
+            [self.kppSwitch setOn:YES];
+        }
     }
     if([AECarsDataBaseManager modelHasDieselEngine:[[AEUserDataManager sharedManager] currentCar].model]
        && [AECarsDataBaseManager modelHasGasEngine:[[AEUserDataManager sharedManager] currentCar].model]){
         [self.engineSwitch setEnabled:YES];
     } else {
         [self.engineSwitch setEnabled:NO];
+        if([AECarsDataBaseManager modelHasDieselEngine:[[AEUserDataManager sharedManager] currentCar].model]){
+            [self.engineLabel setText:DIESEL_ENGINE_TEXT];
+            [self.engineSwitch setOn:NO];
+        } else{
+            [self.engineLabel setText:GAS_ENGINE_TEXT];
+            [self.engineSwitch setOn:YES];
+        }
     }
     if([AECarsDataBaseManager modelHasInjector:[[AEUserDataManager sharedManager] currentCar].model]
        && [AECarsDataBaseManager modelHasCarburetor:[[AEUserDataManager sharedManager] currentCar].model]){
         [self.injectorSwitch setEnabled:YES];
     } else {
         [self.injectorSwitch setEnabled:NO];
+        if([AECarsDataBaseManager modelHasInjector:[[AEUserDataManager sharedManager] currentCar].model]){
+            [self.injectorLabel setText:INJECTOR_TEXT];
+            [self.injectorSwitch setOn:YES];
+        } else{
+            [self.injectorLabel setText:CARBURETOR_TEXT];
+            [self.injectorSwitch setOn:NO];
+        }
     }
 }
 
