@@ -18,14 +18,10 @@ static AEUserDataManager *sharedDataManager = nil;
     } else {
         if(self = [super init]){
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            if ([defaults objectForKey:@"launchCounter"]){
+            if ([defaults objectForKey:@"car"]){
                 [[AEUserDataManager sharedManager] loadData];
-                [defaults setObject:[NSString stringWithFormat:@"%d", [[NSString stringWithFormat:@"%@",[defaults objectForKey:@"launchСounter" ]] intValue] + 1] forKey:@"launchCounter"];
+                [defaults setObject:[NSString stringWithFormat:@"%d", [[NSString stringWithFormat:@"%@",[defaults objectForKey:@"car" ]] intValue] + 1] forKey:@"car"];
                 
-            } else {
-                [AEUserDataManager setDefaultData];
-                
-                [[AEUserDataManager sharedManager] loadData];
             }
             
         }
@@ -41,36 +37,16 @@ static AEUserDataManager *sharedDataManager = nil;
     return sharedDataManager;
 }
 
-+ (void)setDefaultData{
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *UDtemp = [NSString stringWithFormat:@"%d", 0];
-    [defaults setObject:UDtemp forKey:@"maxBonusScore"];
-
-    [defaults setObject:[NSString stringWithFormat:@"%d",1] forKey:@"launchCounter"];
-    
-    [defaults synchronize];
-    NSLog(@"Default stats saved");
-    
-}
-
-
-
 + (void)saveData{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//    NSString *UDtemp = [NSString stringWithFormat: @"%d", [[AEUserDataManager sharedManager] maxBonusScore]];
-//    [defaults setObject:UDtemp forKey:@"maxBonusScore"];
     
     [defaults synchronize];
     NSLog(@"Data saved");
 }
 
 + (void)loadData{
-//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//    self.maxBonusScore = [[defaults objectForKey:@"maxBonusScore"] intValue];
-
     
-    NSLog(@"Stats loaded");
+    NSLog(@"Data loaded");
 }
 
 - (void)setSelectedCarByName:(NSString *)name year:(int)year{
