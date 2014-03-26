@@ -26,6 +26,8 @@
 		7FAF6CD4189FA10200342F14 /* AECar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FAF6CD3189FA10200342F14 /* AECar.m */; };
 		7FAF6CD7189FA14400342F14 /* AEUserDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FAF6CD6189FA14400342F14 /* AEUserDataManager.m */; };
 		7FB74BB318D738EB005FF76C /* AECarsDataBaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB74BB218D738EB005FF76C /* AECarsDataBaseManager.m */; };
+		F8C6927618E259FA00536ED9 /* AEParamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8C6927518E259FA00536ED9 /* AEParamViewController.m */; };
+		F8C6927918E2646800536ED9 /* AEExpertSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = F8C6927818E2646800536ED9 /* AEExpertSystem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,10 @@
 		7FAF6CD6189FA14400342F14 /* AEUserDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AEUserDataManager.m; sourceTree = "<group>"; };
 		7FB74BB118D738EB005FF76C /* AECarsDataBaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AECarsDataBaseManager.h; sourceTree = "<group>"; };
 		7FB74BB218D738EB005FF76C /* AECarsDataBaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AECarsDataBaseManager.m; sourceTree = "<group>"; };
+		F8C6927418E259FA00536ED9 /* AEParamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AEParamViewController.h; sourceTree = "<group>"; };
+		F8C6927518E259FA00536ED9 /* AEParamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AEParamViewController.m; sourceTree = "<group>"; };
+		F8C6927718E2646800536ED9 /* AEExpertSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AEExpertSystem.h; sourceTree = "<group>"; };
+		F8C6927818E2646800536ED9 /* AEExpertSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AEExpertSystem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +137,8 @@
 				7FAF6C9D189F9EBA00342F14 /* AEAppDelegate.m */,
 				7FAF6C9F189F9EBA00342F14 /* AERootViewController.h */,
 				7FAF6CA0189F9EBA00342F14 /* AERootViewController.m */,
+				F8C6927418E259FA00536ED9 /* AEParamViewController.h */,
+				F8C6927518E259FA00536ED9 /* AEParamViewController.m */,
 				7FAF6CA2189F9EBA00342F14 /* AEDataViewController.h */,
 				7FAF6CA3189F9EBA00342F14 /* AEDataViewController.m */,
 				7FAF6CA8189F9EBA00342F14 /* Main_iPhone.storyboard */,
@@ -179,6 +187,8 @@
 				7FAF6CD3189FA10200342F14 /* AECar.m */,
 				7FB74BB118D738EB005FF76C /* AECarsDataBaseManager.h */,
 				7FB74BB218D738EB005FF76C /* AECarsDataBaseManager.m */,
+				F8C6927718E2646800536ED9 /* AEExpertSystem.h */,
+				F8C6927818E2646800536ED9 /* AEExpertSystem.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -285,7 +295,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8C6927618E259FA00536ED9 /* AEParamViewController.m in Sources */,
 				7FAF6CA4189F9EBA00342F14 /* AEDataViewController.m in Sources */,
+				F8C6927918E2646800536ED9 /* AEExpertSystem.m in Sources */,
 				7FB74BB318D738EB005FF76C /* AECarsDataBaseManager.m in Sources */,
 				7FAF6CA1189F9EBA00342F14 /* AERootViewController.m in Sources */,
 				7FAF6C9E189F9EBA00342F14 /* AEAppDelegate.m in Sources */,
