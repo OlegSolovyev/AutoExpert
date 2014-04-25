@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F67580618E4B03D007E8CFB /* AECarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F67580518E4B03D007E8CFB /* AECarModel.m */; };
 		7FAF6C8E189F9EBA00342F14 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FAF6C8D189F9EBA00342F14 /* Foundation.framework */; };
 		7FAF6C90189F9EBA00342F14 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FAF6C8F189F9EBA00342F14 /* CoreGraphics.framework */; };
 		7FAF6C92189F9EBA00342F14 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FAF6C91189F9EBA00342F14 /* UIKit.framework */; };
@@ -41,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7F67580418E4B03D007E8CFB /* AECarModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AECarModel.h; sourceTree = "<group>"; };
+		7F67580518E4B03D007E8CFB /* AECarModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AECarModel.m; sourceTree = "<group>"; };
 		7FAF6C8A189F9EBA00342F14 /* AutoExpert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutoExpert.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FAF6C8D189F9EBA00342F14 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7FAF6C8F189F9EBA00342F14 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -183,6 +186,8 @@
 			children = (
 				7FAF6CD5189FA14400342F14 /* AEUserDataManager.h */,
 				7FAF6CD6189FA14400342F14 /* AEUserDataManager.m */,
+				7F67580418E4B03D007E8CFB /* AECarModel.h */,
+				7F67580518E4B03D007E8CFB /* AECarModel.m */,
 				7FAF6CD2189FA10200342F14 /* AECar.h */,
 				7FAF6CD3189FA10200342F14 /* AECar.m */,
 				7FB74BB118D738EB005FF76C /* AECarsDataBaseManager.h */,
@@ -297,6 +302,7 @@
 			files = (
 				F8C6927618E259FA00536ED9 /* AEParamViewController.m in Sources */,
 				7FAF6CA4189F9EBA00342F14 /* AEDataViewController.m in Sources */,
+				7F67580618E4B03D007E8CFB /* AECarModel.m in Sources */,
 				F8C6927918E2646800536ED9 /* AEExpertSystem.m in Sources */,
 				7FB74BB318D738EB005FF76C /* AECarsDataBaseManager.m in Sources */,
 				7FAF6CA1189F9EBA00342F14 /* AERootViewController.m in Sources */,
