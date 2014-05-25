@@ -20,24 +20,27 @@ static AECarsDataBaseManager *sharedDataManager = nil;
 
 - (id)init{
     if( self = [super init]){
-
+        self.modelsArray = [[NSMutableArray alloc] init];
+        for(int i = 0; i < NUMBER_OF_MODELS; ++i){
+            [self.modelsArray addObject:[AECarsDataBaseManager stringForModelIndex:i]];
+        }
     }
     return self;
 }
 
-+ (CarModel)modelForString:(NSString *)string{
-    CarModel result = 0;
++ (CarModelIndex)modelIndexForString:(NSString *)string{
+    CarModelIndex result = 0;
     for(int i = 0; i < NUMBER_OF_MODELS; ++i){
-        if([string isEqualToString:[AECarsDataBaseManager stringForModel:i]]){
+        if([string isEqualToString:[AECarsDataBaseManager stringForModelIndex:i]]){
             result = i;
         }
     }
     return result;
 }
 
-+ (NSString *)stringForModel:(CarModel)model{
++ (NSString *)stringForModelIndex:(CarModelIndex)modelIndex{
     NSString *result;
-    switch (model) {
+    switch (modelIndex) {
         case vaz2101:
             result = [NSString stringWithFormat:@"ВАЗ 2101"];
             break;
@@ -75,9 +78,9 @@ static AECarsDataBaseManager *sharedDataManager = nil;
     return result;
 }
 
-+ (int)minYearForModel:(CarModel)model{
++ (int)minYearForModelIndex:(CarModelIndex)modelIndex{
     int result = 0;
-    switch (model) {
+    switch (modelIndex) {
         case vaz2101:
             result = 1970;
             break;
@@ -115,9 +118,9 @@ static AECarsDataBaseManager *sharedDataManager = nil;
     return result;
 }
 
-+ (int)maxYearForModel:(CarModel)model{
++ (int)maxYearForModelIndex:(CarModelIndex)modelIndex{
     int result = 0;
-    switch (model) {
+    switch (modelIndex) {
         case vaz2101:
             result = 1988;
             break;
@@ -155,9 +158,9 @@ static AECarsDataBaseManager *sharedDataManager = nil;
     return result;
 }
 
-+ (BOOL)modelHasInjector:(CarModel)model{
++ (BOOL)modelHasInjector:(CarModelIndex)modelIndex{
     BOOL result = 0;
-    switch (model) {
+    switch (modelIndex) {
         case vaz2101:
             result = NO;
             break;
@@ -194,19 +197,19 @@ static AECarsDataBaseManager *sharedDataManager = nil;
     }
     return result;
 }
-+ (BOOL)modelHasCarburetor:(CarModel)model{
++ (BOOL)modelHasCarburetor:(CarModelIndex)modelIndex{
     return YES;
 }
-+ (BOOL)modelHasGasEngine:(CarModel)model{
++ (BOOL)modelHasGasEngine:(CarModelIndex)modelIndex{
     return YES;
 }
-+ (BOOL)modelHasDieselEngine:(CarModel)model{
++ (BOOL)modelHasDieselEngine:(CarModelIndex)modelIndex{
     return NO;
 }
-+ (BOOL)modelHasAutomaticTransmission:(CarModel)model{
++ (BOOL)modelHasAutomaticTransmission:(CarModelIndex)modelIndex{
     return NO;
 }
-+ (BOOL)modelHasManualTransmission:(CarModel)model{
++ (BOOL)modelHasManualTransmission:(CarModelIndex)modelIndex{
     return YES;
 }
 

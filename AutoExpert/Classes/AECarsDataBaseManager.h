@@ -12,15 +12,20 @@
 @interface AECarsDataBaseManager : NSObject
 
 + (id)sharedManager;
-+ (NSString *)stringForModel:(CarModel)model;
-+ (CarModel)modelForString:(NSString *)string;
-+ (int)minYearForModel:(CarModel)model;
-+ (int)maxYearForModel:(CarModel)model;
-+ (BOOL)modelHasInjector:(CarModel)model;
-+ (BOOL)modelHasCarburetor:(CarModel)model;
-+ (BOOL)modelHasGasEngine:(CarModel)model;
-+ (BOOL)modelHasDieselEngine:(CarModel)model;
-+ (BOOL)modelHasAutomaticTransmission:(CarModel)model;
-+ (BOOL)modelHasManualTransmission:(CarModel)model;
+
++ (NSString *)stringForModelIndex:(CarModelIndex)modelIndex;
++ (CarModelIndex)modelIndexForString:(NSString *)string;
+
++ (int)minYearForModelIndex:(CarModelIndex)modelIndex;
++ (int)maxYearForModelIndex:(CarModelIndex)modelIndex;
+
++ (BOOL)modelHasInjector:(CarModelIndex)modelIndex;
++ (BOOL)modelHasCarburetor:(CarModelIndex)modelIndex;
++ (BOOL)modelHasGasEngine:(CarModelIndex)modelIndex;
++ (BOOL)modelHasDieselEngine:(CarModelIndex)modelIndex;
++ (BOOL)modelHasAutomaticTransmission:(CarModelIndex)modelIndex;
++ (BOOL)modelHasManualTransmission:(CarModelIndex)modelIndex;
+
+@property (nonatomic, retain) NSMutableArray *modelsArray;
 
 @end

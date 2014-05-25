@@ -43,6 +43,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="questionLabel" destination="1N3-v8-gpR" id="ula-Xn-88W"/>
+                        <outlet property="tableView" destination="ke2-q2-bf0" id="H46-cC-gvv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PHE-GN-Yf3" sceneMemberID="firstResponder"/>

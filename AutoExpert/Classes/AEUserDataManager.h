@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "AECar.h"
+#import "AESymptom.h"
 
 @interface AEUserDataManager : NSObject
 
@@ -15,8 +16,9 @@
 - (void)loadData;
 + (void)saveData;
 
-- (void)setSelectedCarByName:(NSString *)name year:(int)year;
 @property (nonatomic, retain) AECar *currentCar;
+@property (nonatomic) SymptomCategoryIndex selectedSymptomCategoryIndex;
+@property (nonatomic, retain) AESymptom *selectedSymptom;
 
 @end
 

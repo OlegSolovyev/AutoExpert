@@ -22,7 +22,8 @@ static AEUserDataManager *sharedDataManager = nil;
             [defaults synchronize];
             NSLog(@"Launch number %d", [[defaults objectForKey:@"launchСounter" ] intValue]);
         }
-        self.currentCar = [[AECar alloc] initWithParameters:@"ВАЗ 2101" model:0 engine:0 transmission:0 year:0 distance:0];
+        AECarModel *model = [[AECarModel alloc] initWithModelIndex:0];
+        self.currentCar = [[AECar alloc] initWithParameters:model engine:0 transmission:0 year:0 distance:0];
         
     }
     return self;
@@ -37,7 +38,6 @@ static AEUserDataManager *sharedDataManager = nil;
 
 + (void)saveData{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:[[[AEUserDataManager sharedManager] currentCar] stringModel] forKey:@"CurrentCarModel"];
     [defaults setObject:[NSString stringWithFormat:@"%d", [[[AEUserDataManager sharedManager] currentCar] engine]] forKey:@"CurrentCarEngine"];
     [defaults setObject:[NSString stringWithFormat:@"%d", [[[AEUserDataManager sharedManager] currentCar] transmission]] forKey:@"CurrentCarTransmission"];
     [defaults setObject:[NSString stringWithFormat:@"%d", [[[AEUserDataManager sharedManager] currentCar] injectionType]] forKey:@"CurrentCarInjectionType"];
@@ -49,18 +49,13 @@ static AEUserDataManager *sharedDataManager = nil;
 
 - (void)loadData{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    self.currentCar.stringModel = [defaults objectForKey:@"CurrentCarModel"];
-    self.currentCar.model = [AECarsDataBaseManager modelForString:self.currentCar.stringModel];
+    self.currentCar.model =  [[AECarModel alloc] initWithModelIndex:[AECarsDataBaseManager modelIndexForString:[defaults objectForKey:@"CurrentCarModel"]]];
     self.currentCar.engine = [[defaults objectForKey:@"CurrentCarEngine"] intValue];
     self.currentCar.transmission = [[defaults objectForKey:@"CurrentCarTransmission"] intValue];
     self.currentCar.injectionType = [[defaults objectForKey:@"CurrentCarInjectionType"] intValue];
     self.currentCar.distance = [[defaults objectForKey:@"CurrentCarDistance"] intValue];
     self.currentCar.year = [[defaults objectForKey:@"CurrentCarYear"] intValue];
     NSLog(@"Data loaded");
-}
-
-- (void)setSelectedCarByName:(NSString *)name year:(int)year{
-    
 }
 
 @end

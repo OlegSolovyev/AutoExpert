@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AECar.h"
+#import "AESymptomDataBaseManager.h"
 
 @interface AEExpertSystem : NSObject
 

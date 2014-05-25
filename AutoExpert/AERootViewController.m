@@ -16,11 +16,10 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     self.modelsArray = [[NSMutableArray alloc] init];
-    for(int i = 0; i < NUMBER_OF_MODELS; ++i){
-        [self.modelsArray addObject:[AECarsDataBaseManager stringForModel:i]];
-    }
+    self.modelsArray = [[AECarsDataBaseManager sharedManager] modelsArray];
     self.yearsArray = [[NSMutableArray alloc] init];
-    for (int i = [AECarsDataBaseManager maxYearForModel:0]; i >= [AECarsDataBaseManager minYearForModel:0]; --i){
+    
+    for (int i = [AECarsDataBaseManager maxYearForModelIndex:0]; i >= [AECarsDataBaseManager minYearForModelIndex:0]; --i){
         [self.yearsArray addObject:[NSString stringWithFormat:@"%d", i]];
     }
     [self.scrollView setScrollEnabled:TRUE];
@@ -71,10 +70,9 @@
         [[[AEUserDataManager sharedManager] currentCar] setYear:self.selectedYear];
     } else{
         self.selectedCar = [self.modelsArray objectAtIndex:row];
-        [[[AEUserDataManager sharedManager] currentCar] setStringModel:self.selectedCar];
-        [[[AEUserDataManager sharedManager] currentCar] setModel:[AECarsDataBaseManager modelForString: self.selectedCar]];
+        [[[AEUserDataManager sharedManager] currentCar] setModel:[[AECarModel alloc] initWithModelIndex:[AECarsDataBaseManager modelIndexForString: self.selectedCar]]];
         [self.yearsArray removeAllObjects];
-        for (int i = [AECarsDataBaseManager maxYearForModel:[AECarsDataBaseManager modelForString:self.selectedCar]]; i >= [AECarsDataBaseManager minYearForModel:[AECarsDataBaseManager modelForString:self.selectedCar]]; --i){
+        for (int i = [AECarsDataBaseManager maxYearForModelIndex:[AECarsDataBaseManager modelIndexForString:self.selectedCar]]; i >= [AECarsDataBaseManager minYearForModelIndex:[AECarsDataBaseManager modelIndexForString:self.selectedCar]]; --i){
             [self.yearsArray addObject:[NSString stringWithFormat:@"%d", i]];
         }
         [self.yearPickerView reloadAllComponents];

@@ -27,13 +27,13 @@
     self.scrollView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     self.tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
     [self.scrollView addGestureRecognizer:self.tapRecognizer];
-    NSLog(@"Current car: %@", [[AEUserDataManager sharedManager] currentCar].stringModel);
-    if([AECarsDataBaseManager modelHasAutomaticTransmission:[[AEUserDataManager sharedManager] currentCar].model]
-       && [AECarsDataBaseManager modelHasManualTransmission:[[AEUserDataManager sharedManager] currentCar].model]){
+    NSLog(@"Current car: %@", [[AEUserDataManager sharedManager] currentCar].model.name);
+    if([[AEUserDataManager sharedManager] currentCar].model.automaticTransmission
+       && [[AEUserDataManager sharedManager] currentCar].model.manualTransmission){
         [self.kppSwitch setEnabled:YES];
     } else {
         [self.kppSwitch setEnabled:NO];
-        if([AECarsDataBaseManager modelHasAutomaticTransmission:[[AEUserDataManager sharedManager] currentCar].model]){
+        if([[AEUserDataManager sharedManager] currentCar].model.automaticTransmission){
             [self.kppLabel setText:AKPP_TEXT];
             [self.kppSwitch setOn:NO];
         } else{
@@ -41,12 +41,12 @@
             [self.kppSwitch setOn:YES];
         }
     }
-    if([AECarsDataBaseManager modelHasDieselEngine:[[AEUserDataManager sharedManager] currentCar].model]
-       && [AECarsDataBaseManager modelHasGasEngine:[[AEUserDataManager sharedManager] currentCar].model]){
+    if([[AEUserDataManager sharedManager] currentCar].model.dieselEngine
+       && [[AEUserDataManager sharedManager] currentCar].model.gasEngine){
         [self.engineSwitch setEnabled:YES];
     } else {
         [self.engineSwitch setEnabled:NO];
-        if([AECarsDataBaseManager modelHasDieselEngine:[[AEUserDataManager sharedManager] currentCar].model]){
+        if([[AEUserDataManager sharedManager] currentCar].model.dieselEngine){
             [self.engineLabel setText:DIESEL_ENGINE_TEXT];
             [self.engineSwitch setOn:NO];
         } else{
@@ -54,12 +54,12 @@
             [self.engineSwitch setOn:YES];
         }
     }
-    if([AECarsDataBaseManager modelHasInjector:[[AEUserDataManager sharedManager] currentCar].model]
-       && [AECarsDataBaseManager modelHasCarburetor:[[AEUserDataManager sharedManager] currentCar].model]){
+    if([[AEUserDataManager sharedManager] currentCar].model.injector
+       && [[AEUserDataManager sharedManager] currentCar].model.carburetor){
         [self.injectorSwitch setEnabled:YES];
     } else {
         [self.injectorSwitch setEnabled:NO];
-        if([AECarsDataBaseManager modelHasInjector:[[AEUserDataManager sharedManager] currentCar].model]){
+        if([[AEUserDataManager sharedManager] currentCar].model.injector){
             [self.injectorLabel setText:INJECTOR_TEXT];
             [self.injectorSwitch setOn:YES];
         } else{

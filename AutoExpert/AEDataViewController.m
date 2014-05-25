@@ -7,6 +7,8 @@
 //
 
 #import "AEDataViewController.h"
+#import "AEExpertSystem.h"
+#import "AEUserDataManager.h"
 
 @interface AEDataViewController ()
 
@@ -17,13 +19,27 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-     self.answers = [[NSMutableArray alloc] init];
-    for(int i = 0; i < 10; ++i){
-        [self.answers addObject:[NSString stringWithFormat:@"Симптом %d", i]];
-    }
-    [self.questionLabel setText:@"Выберите неисправность"];
+    [self switchToSymptomCategorySelect];
     self.selectCounter = 0;
+}
+
+- (void)switchToSymptomCategorySelect{
+    self.answers = [[NSMutableArray alloc] init];
+    self.answers = [AESymptomDataBaseManager symptomCategoriesArray];
+    [self.questionLabel setText:@"Выберите категорию"];
+    self.currentState = symptomCategorySelect;
+    [self.tableView reloadData];
+}
+
+- (void)switchToSymptomSelect{
+    NSMutableArray *sypmtoms = [[AESymptomDataBaseManager sharedManager] symptomsForCategoryIndex:[[AEUserDataManager sharedManager] selectedSymptomCategoryIndex]];
+    [self.questionLabel setText:@"Выберите симптом"];
+    [self.answers removeAllObjects];
+    for(AESymptom *symptom in sypmtoms){
+        [self.answers addObject:symptom.name];
+    }
+    self.currentState = symptomSelect;
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -58,28 +74,27 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     self.selectCounter++;
-    if(self.selectCounter < 10){
-        int num = indexPath.row;
-        
-        NSMutableArray *array = [[NSMutableArray alloc] init];
-        for(NSString *str in self.answers){
-            NSString *string = [str stringByAppendingString:[NSString stringWithFormat: @"-%d", num]];
-            [array addObject:string];
+    int row = indexPath.row;
+    
+    switch (self.currentState) {
+        case symptomCategorySelect:{
+            [[AEUserDataManager sharedManager] setSelectedSymptomCategoryIndex:row];
+            [self switchToSymptomSelect];
+            break;
         }
-        self.answers = array;
-        [tableView reloadData];
-    } else{
-        [tableView removeFromSuperview];
-        self.questionLabel.frame = CGRectMake([UIApplication sharedApplication].keyWindow.bounds.size.width / 2 - self.questionLabel.frame.size.width / 2, [UIApplication sharedApplication].keyWindow.bounds.size.height / 2, self.questionLabel.frame.size.width, self.questionLabel.frame.size.height);
-        NSString *str = [[self.answers objectAtIndex:indexPath.row] stringByAppendingString:[NSString stringWithFormat: @"-%d", indexPath.row]];
-        NSString *resString = [str substringWithRange:NSMakeRange(8, str.length - 8)];
-        [self.questionLabel setText:resString];
-        self.navigationItem.title = @"Ответы";
+        case symptomSelect:{
+            [[AEUserDataManager sharedManager] setSelectedSymptom:[[AESymptomDataBaseManager sharedManager] symptomForName:[[[tableView cellForRowAtIndexPath:indexPath] textLabel] text]]];
+            [self finish];
+            break;
+        }
+            
+        default:
+            break;
     }
+}
+
+- (void)finish{
     
 }
 
-- (IBAction)nextButtonClicked:(UIButton *)sender {
-    
-}
 @end
