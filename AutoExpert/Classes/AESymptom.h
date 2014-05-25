@@ -24,15 +24,23 @@ typedef enum{
 @interface AESymptom : NSObject
 
 @property (nonatomic, retain) NSString *name;
+@property (nonatomic) int index;
 @property (nonatomic) SymptomCategoryIndex categoryIndex;
-@property (nonatomic, retain) NSMutableArray *causes;
+@property (nonatomic, retain) NSArray *causes;
+@property (nonatomic, retain) NSArray *models;
 
-@property (nonatomic) BOOL injector;
-@property (nonatomic) BOOL carburetor;
-@property (nonatomic) BOOL gasEngine;
-@property (nonatomic) BOOL dieselEngine;
-@property (nonatomic) BOOL automaticTransmission;
-@property (nonatomic) BOOL manualTransmission;
+- (id)initWithName:(NSString *)name
+                   index:(int)index
+           categoryIndex:(SymptomCategoryIndex)categoryIndex
+                  causes:(NSArray *)causes
+                  models:(NSArray *)models;
+
+//@property (nonatomic) BOOL injector;
+//@property (nonatomic) BOOL carburetor;
+//@property (nonatomic) BOOL gasEngine;
+//@property (nonatomic) BOOL dieselEngine;
+//@property (nonatomic) BOOL automaticTransmission;
+//@property (nonatomic) BOOL manualTransmission;
 
 
 

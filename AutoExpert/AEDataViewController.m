@@ -94,7 +94,7 @@
 }
 
 - (void)finish{
-    
+    NSLog(@"Selected symptom : %@", [[[AEUserDataManager sharedManager] selectedSymptom] name]);
 }
 
 @end
