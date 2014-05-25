@@ -29,6 +29,7 @@
     [self.questionLabel setText:@"Выберите категорию"];
     self.currentState = symptomCategorySelect;
     [self.tableView reloadData];
+    [self resizeTableView];
 }
 
 - (void)switchToSymptomSelect{
@@ -40,6 +41,15 @@
     }
     self.currentState = symptomSelect;
     [self.tableView reloadData];
+    [self resizeTableView];
+}
+
+- (void)resizeTableView{
+    CGFloat tableHeight = 0.0f;
+    for (int i = 0; i < [self.answers count]; i ++) {
+        tableHeight += [self tableView:self.tableView heightForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+    }
+    self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.frame.size.width, tableHeight);
 }
 
 - (void)didReceiveMemoryWarning
@@ -56,6 +66,11 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [self.answers count];
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 40;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

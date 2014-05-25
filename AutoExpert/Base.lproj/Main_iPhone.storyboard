@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
-        <!--Data View Controller - Вопрос-->
+        <!--Data View Controller - Неисправность-->
         <scene sceneID="3qM-eY-iJ1">
             <objects>
                 <viewController storyboardIdentifier="AEDataViewController" id="hzS-jB-y9W" customClass="AEDataViewController" sceneMemberID="viewController">
@@ -38,7 +38,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.61324490779166374" green="0.83750372768152204" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Вопрос" id="Yt7-qr-DHd">
+                    <navigationItem key="navigationItem" title="Неисправность" id="Yt7-qr-DHd">
                         <barButtonItem key="backBarButtonItem" title="Назад" id="1PZ-bM-6c0"/>
                     </navigationItem>
                     <connections>
@@ -49,6 +49,56 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PHE-GN-Yf3" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1734" y="476"/>
+        </scene>
+        <!--View Controller - Вопрос-->
+        <scene sceneID="s90-0d-Tsz">
+            <objects>
+                <viewController id="mOR-vv-uZY" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="470-c2-K55">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="uwP-0v-Li8">
+                                <rect key="frame" x="0.0" y="65" width="320" height="503"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Wdb-S7-bx4">
+                                        <rect key="frame" x="29" y="13" width="270" height="309"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="H1s-ld-MQZ">
+                                        <rect key="frame" x="47" y="370" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" title="ДА">
+                                            <color key="titleColor" red="0.1092700330086197" green="1" blue="0.054375571186456084" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="vZH-O8-RxF">
+                                        <rect key="frame" x="224" y="370" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" title="НЕТ">
+                                            <color key="titleColor" red="1" green="0.081029937346001391" blue="0.10769645033968456" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Вопрос" id="RXh-1H-pRL">
+                        <barButtonItem key="backBarButtonItem" title="Назад" id="PdJ-16-9nd"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TcW-Rg-Z1P" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2135" y="471"/>
         </scene>
         <!--Param View Controller - Параметры-->
         <scene sceneID="3NL-gB-ApC">
