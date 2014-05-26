@@ -62,10 +62,31 @@ static AESymptomDataBaseManager *sharedDataManager = nil;
 //            NSLog(@"Category : %d", categoryIndex);
             NSString *name = [allLinedStrings objectAtIndex:i + 6];
 //            NSLog(@"Name : %@",name);
-            NSArray *causes = [[allLinedStrings objectAtIndex:i + 8] componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:SEPARATOR]];
-//            NSLog(@"Causes[0] : %@", causes[0]);
+            NSMutableArray *causes = [[NSMutableArray alloc] init];
             
-            NSArray *models = [[allLinedStrings objectAtIndex:i + 10] componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:SEPARATOR]];
+            int j = i + 8;
+            
+            NSArray *causeString = [[NSArray alloc] initWithObjects:@"", nil];
+            while (![[causeString objectAtIndex:0] isEqualToString:SYMPTOM_MODELS_STRING]) {
+                causeString = [[allLinedStrings objectAtIndex:j] componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:SEPARATOR]];
+                NSString *name = [causeString objectAtIndex:0];
+                NSMutableArray *tags = [[NSMutableArray alloc] init];
+                if(causeString.count > 1){
+                    for(int k = 1; k < causeString.count; ++k){
+                        [tags addObject:[causeString objectAtIndex:k]];
+//                        NSLog(@"TAG : %@",[causeString objectAtIndex:k] );
+                    }
+                } else{
+                    tags = nil;
+                }
+                if(![name isEqualToString:SYMPTOM_MODELS_STRING]){
+                    [causes addObject:[[AESymptomCause alloc] initWithName:name
+                                                                  tags:tags]];
+                }
+                j++;
+            }
+            
+            NSArray *models = [[allLinedStrings objectAtIndex:j] componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:SEPARATOR]];
 //            NSLog(@"Models[0] : %@", models[0]);
             
             [self.symptoms addObject:[[AESymptom alloc] initWithName:name
@@ -73,7 +94,7 @@ static AESymptomDataBaseManager *sharedDataManager = nil;
                                                        categoryIndex:categoryIndex
                                                               causes:causes
                                                               models:models]];
-            i += 10;
+            i = j + 1;
         }
     }
     

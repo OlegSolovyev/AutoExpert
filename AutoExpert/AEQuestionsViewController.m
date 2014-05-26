@@ -17,9 +17,14 @@
 
 - (void)viewDidLoad
 {
-    self.causes = [NSMutableArray arrayWithArray:[[AEUserDataManager sharedManager] selectedSymptom].causes];
+    self.causes = [[NSMutableArray alloc] init];
+    for(AESymptomCause *cause in [[AEUserDataManager sharedManager] selectedSymptom].causes){
+        if([self causeIsAcceptableForCurrentCar:cause]){
+            [self.causes addObject:cause];
+        }
+    }
     self.currentCause = 0;
-    [self.textView setText:[self.causes objectAtIndex:0]];
+    [self.textView setText:[[self.causes objectAtIndex:0] name]];
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
@@ -30,10 +35,24 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (BOOL)causeIsAcceptableForCurrentCar:(AESymptomCause *)cause{
+    BOOL result = YES;
+    AECar *car = [[AEUserDataManager sharedManager] currentCar];
+    
+    if(cause.injector && car.injectionType != injector) result = NO;
+    if(cause.carburetor && car.injectionType != carburetor) result = NO;
+    if(cause.gasEngine && car.engine != gasoline) result = NO;
+    if(cause.dieselEngine && car.engine != diesel) result = NO;
+    if(cause.automaticTransmission && car.transmission != automaticDSG) result = NO;
+    if(cause.manualTransmission && car.transmission != manual) result = NO;
+    
+    return result;
+}
+
 - (IBAction)yesButtonPresses:(id)sender {
     if(self.currentCause != self.causes.count - 1){
         self.currentCause++;
-        [self.textView setText:[self.causes objectAtIndex:self.currentCause]];
+        [self.textView setText:[[self.causes objectAtIndex:self.currentCause] name]];
     } else{
         [self.textView setText:@"Обратитесь к механику. Система не знает как Вам помочь"];
         [self setHiddenForButtons:YES];
@@ -41,7 +60,7 @@
 }
 
 - (IBAction)noButtonPressed:(id)sender {
-    [self.textView setText:[NSString stringWithFormat:@"Вы нашли причину неисправности : %@", [self.causes objectAtIndex:self.currentCause]]];
+    [self.textView setText:[NSString stringWithFormat:@"Вы нашли причину неисправности : %@", [[self.causes objectAtIndex:self.currentCause] name]]];
     [self setHiddenForButtons:YES];
 }
 

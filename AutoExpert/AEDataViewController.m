@@ -34,11 +34,13 @@
 }
 
 - (void)switchToSymptomSelect{
-    NSMutableArray *sypmtoms = [[AESymptomDataBaseManager sharedManager] symptomsForCategoryIndex:[[AEUserDataManager sharedManager] selectedSymptomCategoryIndex]];
     [self.questionLabel setText:@"Выберите симптом"];
     [self.answers removeAllObjects];
-    for(AESymptom *symptom in sypmtoms){
-        [self.answers addObject:symptom.name];
+    NSString *modelName = [[[[AEUserDataManager sharedManager] currentCar] model] name];
+    for(AESymptom *symptom in [[AESymptomDataBaseManager sharedManager] symptomsForCategoryIndex:[[AEUserDataManager sharedManager] selectedSymptomCategoryIndex]]){
+        if([symptom.models containsObject:modelName]){
+            [self.answers addObject:symptom.name];
+        }
     }
     self.currentState = symptomSelect;
     [self.tableView reloadData];

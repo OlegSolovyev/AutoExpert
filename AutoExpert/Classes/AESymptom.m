@@ -11,10 +11,10 @@
 
 @implementation AESymptom
 - (id)initWithName:(NSString *)name
-                   index:(int)index
-           categoryIndex:(SymptomCategoryIndex)categoryIndex
-                  causes:(NSArray *)causes
-                  models:(NSArray *)models{
+             index:(int)index
+     categoryIndex:(SymptomCategoryIndex)categoryIndex
+            causes:(NSArray *)causes
+            models:(NSArray *)models{
     if(self = [super init]){
         self.name = name;
         self.index = index;

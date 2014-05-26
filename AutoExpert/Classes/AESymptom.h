@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "AESymptomSpecification.h"
+#import "AESymptomCause.h"
 
 typedef enum{
     engine,
@@ -30,18 +31,9 @@ typedef enum{
 @property (nonatomic, retain) NSArray *models;
 
 - (id)initWithName:(NSString *)name
-                   index:(int)index
-           categoryIndex:(SymptomCategoryIndex)categoryIndex
-                  causes:(NSArray *)causes
-                  models:(NSArray *)models;
-
-//@property (nonatomic) BOOL injector;
-//@property (nonatomic) BOOL carburetor;
-//@property (nonatomic) BOOL gasEngine;
-//@property (nonatomic) BOOL dieselEngine;
-//@property (nonatomic) BOOL automaticTransmission;
-//@property (nonatomic) BOOL manualTransmission;
-
-
+             index:(int)index
+     categoryIndex:(SymptomCategoryIndex)categoryIndex
+            causes:(NSArray *)causes
+            models:(NSArray *)models;
 
 @end
