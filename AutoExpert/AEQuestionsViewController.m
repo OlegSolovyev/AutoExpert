@@ -50,6 +50,11 @@
 }
 
 - (IBAction)yesButtonPresses:(id)sender {
+    [self.textView setText:[NSString stringWithFormat:@"Вы нашли причину неисправности : %@", [[self.causes objectAtIndex:self.currentCause] name]]];
+    [self setHiddenForButtons:YES];
+}
+
+- (IBAction)noButtonPressed:(id)sender {
     if(self.currentCause != self.causes.count - 1){
         self.currentCause++;
         [self.textView setText:[[self.causes objectAtIndex:self.currentCause] name]];
@@ -57,11 +62,6 @@
         [self.textView setText:@"Обратитесь к механику. Система не знает как Вам помочь"];
         [self setHiddenForButtons:YES];
     }
-}
-
-- (IBAction)noButtonPressed:(id)sender {
-    [self.textView setText:[NSString stringWithFormat:@"Вы нашли причину неисправности : %@", [[self.causes objectAtIndex:self.currentCause] name]]];
-    [self setHiddenForButtons:YES];
 }
 
 - (void)setHiddenForButtons:(BOOL)hidden{

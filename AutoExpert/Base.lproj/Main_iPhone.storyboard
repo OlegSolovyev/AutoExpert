@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="pFb-dt-yKg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="pFb-dt-yKg">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--Data View Controller - Неисправность-->
@@ -50,7 +50,7 @@
             </objects>
             <point key="canvasLocation" x="1734" y="476"/>
         </scene>
-        <!--Questions View Controller - Вопрос-->
+        <!--Questions View Controller - Title-->
         <scene sceneID="s90-0d-Tsz">
             <objects>
                 <viewController storyboardIdentifier="Questions" id="mOR-vv-uZY" customClass="AEQuestionsViewController" sceneMemberID="viewController">
@@ -89,7 +89,7 @@
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" id="7Dm-Ue-mM7">
                                         <rect key="frame" x="20" y="27" width="280" height="310"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.79694925587542675" green="0.95561403622476659" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -97,11 +97,9 @@
                                 </subviews>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.61324490779999996" green="0.83750372770000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Вопрос" id="RXh-1H-pRL">
-                        <barButtonItem key="backBarButtonItem" title="Назад" id="PdJ-16-9nd"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Title" id="XqU-QM-dqr"/>
                     <connections>
                         <outlet property="noButton" destination="vZH-O8-RxF" id="RIx-3D-Cv5"/>
                         <outlet property="scrollView" destination="uwP-0v-Li8" id="Z2B-FV-BJK"/>
@@ -165,10 +163,10 @@
                                             <action selector="injectorValueChanged:" destination="dee-5I-aDs" eventType="valueChanged" id="Kzi-2T-PSY"/>
                                         </connections>
                                     </switch>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Бензиновый двигатель" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YWW-wV-YSX">
-                                        <rect key="frame" x="45" y="187" width="187" height="47"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Бензиновый двигатель" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YWW-wV-YSX">
+                                        <rect key="frame" x="45" y="187" width="164" height="47"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.069818213579999996" green="0.057931628079999999" blue="0.29474249479999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>

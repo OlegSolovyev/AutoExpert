@@ -17,10 +17,12 @@ typedef enum{
     clutch,
     transmission,
     suspension,
-    steering
+    steering,
+    breaking,
+    common
 } SymptomCategoryIndex;
 
-#define NUMBER_OF_SYMPTOM_CATEGORIES 7
+#define NUMBER_OF_SYMPTOM_CATEGORIES 9
 
 @interface AESymptom : NSObject
 

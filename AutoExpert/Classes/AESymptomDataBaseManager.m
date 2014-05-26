@@ -130,10 +130,16 @@ static AESymptomDataBaseManager *sharedDataManager = nil;
             result = @"Коробка передач";
             break;
         case suspension:
-            result = @"Подвеска";
+            result = @"Шины и подвеска";
             break;
         case steering:
             result = @"Рулевое управление";
+            break;
+        case breaking:
+            result = @"Тормозная система";
+            break;
+        case common:
+            result = @"Общее";
             break;
             
         default:
