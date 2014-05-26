@@ -30,6 +30,7 @@
 		F8BC5E4519326B3C0007BC5B /* AESymptom.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BC5E4419326B3C0007BC5B /* AESymptom.m */; };
 		F8BC5E4E19327FD20007BC5B /* AESymptomDataBaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BC5E4D19327FD20007BC5B /* AESymptomDataBaseManager.m */; };
 		F8BC5E5019329DB40007BC5B /* SymptomsDataBase.txt in Resources */ = {isa = PBXBuildFile; fileRef = F8BC5E4F19329DB40007BC5B /* SymptomsDataBase.txt */; };
+		F8BC5E531932B4D30007BC5B /* AEQuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BC5E521932B4D30007BC5B /* AEQuestionsViewController.m */; };
 		F8C6927618E259FA00536ED9 /* AEParamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8C6927518E259FA00536ED9 /* AEParamViewController.m */; };
 		F8C6927918E2646800536ED9 /* AEExpertSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = F8C6927818E2646800536ED9 /* AEExpertSystem.m */; };
 /* End PBXBuildFile section */
@@ -80,6 +81,8 @@
 		F8BC5E4C19327FD20007BC5B /* AESymptomDataBaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AESymptomDataBaseManager.h; sourceTree = "<group>"; };
 		F8BC5E4D19327FD20007BC5B /* AESymptomDataBaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AESymptomDataBaseManager.m; sourceTree = "<group>"; };
 		F8BC5E4F19329DB40007BC5B /* SymptomsDataBase.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SymptomsDataBase.txt; sourceTree = "<group>"; };
+		F8BC5E511932B4D30007BC5B /* AEQuestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AEQuestionsViewController.h; sourceTree = "<group>"; };
+		F8BC5E521932B4D30007BC5B /* AEQuestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AEQuestionsViewController.m; sourceTree = "<group>"; };
 		F8C6927418E259FA00536ED9 /* AEParamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AEParamViewController.h; sourceTree = "<group>"; };
 		F8C6927518E259FA00536ED9 /* AEParamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AEParamViewController.m; sourceTree = "<group>"; };
 		F8C6927718E2646800536ED9 /* AEExpertSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AEExpertSystem.h; sourceTree = "<group>"; };
@@ -152,6 +155,8 @@
 				F8C6927518E259FA00536ED9 /* AEParamViewController.m */,
 				7FAF6CA2189F9EBA00342F14 /* AEDataViewController.h */,
 				7FAF6CA3189F9EBA00342F14 /* AEDataViewController.m */,
+				F8BC5E511932B4D30007BC5B /* AEQuestionsViewController.h */,
+				F8BC5E521932B4D30007BC5B /* AEQuestionsViewController.m */,
 				7FAF6CA8189F9EBA00342F14 /* Main_iPhone.storyboard */,
 				7FAF6CAB189F9EBA00342F14 /* Main_iPad.storyboard */,
 				7FAF6CAE189F9EBA00342F14 /* Images.xcassets */,
@@ -324,6 +329,7 @@
 				7FAF6CA1189F9EBA00342F14 /* AERootViewController.m in Sources */,
 				7FAF6C9E189F9EBA00342F14 /* AEAppDelegate.m in Sources */,
 				7FAF6CD4189FA10200342F14 /* AECar.m in Sources */,
+				F8BC5E531932B4D30007BC5B /* AEQuestionsViewController.m in Sources */,
 				7FAF6C9A189F9EBA00342F14 /* main.m in Sources */,
 				7FAF6CD7189FA14400342F14 /* AEUserDataManager.m in Sources */,
 			);

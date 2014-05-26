@@ -9,6 +9,7 @@
 #import "AEDataViewController.h"
 #import "AEExpertSystem.h"
 #import "AEUserDataManager.h"
+#import "AEQuestionsViewController.h"
 
 @interface AEDataViewController ()
 
@@ -109,6 +110,11 @@
 }
 
 - (void)finish{
+    NSString * storyboardName = @"Main_iPhone";
+    NSString * viewControllerID = @"Questions";
+    UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
+    AEQuestionsViewController *controller = (AEQuestionsViewController *)[storyboard instantiateViewControllerWithIdentifier:viewControllerID];
+    [self presentViewController:controller animated:NO completion:nil];
     NSLog(@"Selected symptom : %@", [[[AEUserDataManager sharedManager] selectedSymptom] name]);
 }
 
