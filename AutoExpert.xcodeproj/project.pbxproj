@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7F67580618E4B03D007E8CFB /* AECarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F67580518E4B03D007E8CFB /* AECarModel.m */; };
+		7F88587F19354DC000432A24 /* AE.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F88587E19354DC000432A24 /* AE.png */; };
 		7FAF6C8E189F9EBA00342F14 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FAF6C8D189F9EBA00342F14 /* Foundation.framework */; };
 		7FAF6C90189F9EBA00342F14 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FAF6C8F189F9EBA00342F14 /* CoreGraphics.framework */; };
 		7FAF6C92189F9EBA00342F14 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FAF6C91189F9EBA00342F14 /* UIKit.framework */; };
@@ -49,6 +50,7 @@
 /* Begin PBXFileReference section */
 		7F67580418E4B03D007E8CFB /* AECarModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AECarModel.h; sourceTree = "<group>"; };
 		7F67580518E4B03D007E8CFB /* AECarModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AECarModel.m; sourceTree = "<group>"; };
+		7F88587E19354DC000432A24 /* AE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AE.png; sourceTree = "<group>"; };
 		7FAF6C8A189F9EBA00342F14 /* AutoExpert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutoExpert.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FAF6C8D189F9EBA00342F14 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7FAF6C8F189F9EBA00342F14 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -163,6 +165,7 @@
 				7FAF6CA8189F9EBA00342F14 /* Main_iPhone.storyboard */,
 				7FAF6CAB189F9EBA00342F14 /* Main_iPad.storyboard */,
 				7FAF6CAE189F9EBA00342F14 /* Images.xcassets */,
+				7F88587E19354DC000432A24 /* AE.png */,
 				F8BC5E4F19329DB40007BC5B /* SymptomsDataBase.txt */,
 				7FAF6C94189F9EBA00342F14 /* Supporting Files */,
 			);
@@ -304,6 +307,7 @@
 				7FAF6CAD189F9EBA00342F14 /* Main_iPad.storyboard in Resources */,
 				7FAF6CAF189F9EBA00342F14 /* Images.xcassets in Resources */,
 				F8BC5E5019329DB40007BC5B /* SymptomsDataBase.txt in Resources */,
+				7F88587F19354DC000432A24 /* AE.png in Resources */,
 				7FAF6CAA189F9EBA00342F14 /* Main_iPhone.storyboard in Resources */,
 				7FAF6C98189F9EBA00342F14 /* InfoPlist.strings in Resources */,
 			);
