@@ -22,6 +22,16 @@
     [super viewDidLoad];
     [self switchToSymptomCategorySelect];
     self.selectCounter = 0;
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"< Назад" style:UIBarButtonItemStylePlain target:self action:@selector(backButtonAction:)];
+}
+
+- (void)backButtonAction:(id)sender{
+    if (self.currentState == symptomCategorySelect) {
+        [self.navigationController popViewControllerAnimated:YES];
+    } else {
+        [self switchToSymptomCategorySelect];
+    }
 }
 
 - (void)switchToSymptomCategorySelect{
@@ -50,7 +60,7 @@
 - (void)resizeTableView{
     CGFloat tableHeight = 0.0f;
     for (int i = 0; i < [self.answers count]; i ++) {
-        tableHeight += [self tableView:self.tableView heightForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+       if(i < 9)tableHeight += [self tableView:self.tableView heightForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
     }
     self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.frame.size.width, tableHeight);
 }
@@ -116,7 +126,8 @@
     NSString * viewControllerID = @"Questions";
     UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
     AEQuestionsViewController *controller = (AEQuestionsViewController *)[storyboard instantiateViewControllerWithIdentifier:viewControllerID];
-    [self presentViewController:controller animated:NO completion:nil];
+//    [self pushViewController:controller animated:NO completion:nil];
+    [self.navigationController pushViewController:controller animated:YES];
     NSLog(@"Selected symptom : %@", [[[AEUserDataManager sharedManager] selectedSymptom] name]);
 }
 

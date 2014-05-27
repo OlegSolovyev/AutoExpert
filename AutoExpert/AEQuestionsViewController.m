@@ -17,6 +17,7 @@
 
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
     self.causes = [[NSMutableArray alloc] init];
     for(AESymptomCause *cause in [[AEUserDataManager sharedManager] selectedSymptom].causes){
         if([self causeIsAcceptableForCurrentCar:cause]){
@@ -25,7 +26,9 @@
     }
     self.currentCause = 0;
     [self.textView setText:[[self.causes objectAtIndex:0] name]];
-    [super viewDidLoad];
+    self.textView.font = [UIFont systemFontOfSize:29];
+    
+
 	// Do any additional setup after loading the view.
 }
 
