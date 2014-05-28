@@ -17,9 +17,11 @@
 
 @implementation AESymptomCause
 - (id)initWithName:(NSString *)name
-              tags:(NSArray *)tags{
+              tags:(NSArray *)tags
+       probability:(int)probability{
     if(self = [super init]){
         self.name = name;
+        self.probability = probability;
         
         self.automaticTransmission = FALSE;
         self.manualTransmission = FALSE;
@@ -50,4 +52,13 @@
     
     return  self;
 }
+
+- (NSComparisonResult)compareProbability:(AESymptomCause *)otherObject{
+    if(self.probability > otherObject.probability){
+        return NSOrderedAscending;
+    } else if(self.probability < otherObject.probability){
+        return NSOrderedDescending;
+    }else return NSOrderedSame;
+}
+
 @end

@@ -19,11 +19,14 @@
         self.name = name;
         self.index = index;
         self.categoryIndex = categoryIndex;
-        self.causes = causes;
+        self.causes = [causes sortedArrayUsingSelector:@selector(compareProbability:)];
         if([models[0] isEqualToString:@"All"]){
             self.models = [[AECarsDataBaseManager sharedManager] modelsArray];
         } else{
             self.models = models;
+        }
+        for(AESymptomCause *cause in self.causes){
+            NSLog(@"%@",cause.name);
         }
 
     }

@@ -61,8 +61,10 @@
     if(self.currentCause != self.causes.count - 1){
         self.currentCause++;
         [self.textView setText:[[self.causes objectAtIndex:self.currentCause] name]];
+        self.textView.font = [UIFont systemFontOfSize:29];
     } else{
         [self.textView setText:@"Обратитесь к механику. Система не знает как Вам помочь"];
+        self.textView.font = [UIFont systemFontOfSize:29];
         [self setHiddenForButtons:YES];
     }
 }

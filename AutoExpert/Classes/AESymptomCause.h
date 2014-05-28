@@ -12,6 +12,7 @@
 
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) NSArray *tags;
+@property (nonatomic) int probability;
 
 @property (nonatomic) BOOL injector;
 @property (nonatomic) BOOL carburetor;
@@ -21,6 +22,7 @@
 @property (nonatomic) BOOL manualTransmission;
 
 - (id)initWithName:(NSString *)name
-              tags:(NSArray *)tags;
-
+              tags:(NSArray *)tags
+       probability:(int)probability;
+- (NSComparisonResult)compareProbability:(AESymptomCause *)otherObject;
 @end
