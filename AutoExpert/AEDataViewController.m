@@ -85,8 +85,9 @@ typedef enum{
 
 - (void)resizeTableView{
     CGFloat tableHeight = 0.0f;
+    int num = self.currentState == symptomCategorySelect ? 9 : 5;
     for (int i = 0; i < [self.answers count]; i ++) {
-       if(i < 9)tableHeight += [self tableView:self.tableView heightForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+       if(i < num)tableHeight += [self tableView:self.tableView heightForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
     }
     self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.frame.size.width, tableHeight);
 }
@@ -109,17 +110,24 @@ typedef enum{
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 40;
+    return (self.currentState == symptomCategorySelect) ? 40. : 70.;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *simpleTableIdentifier = @"RecipeCell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    static NSString * cellIdentifier = @"TableCell";
     
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    
+    if (cell == nil)
+    {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1
+                                      reuseIdentifier:cellIdentifier];
+        
+        [[cell textLabel] setNumberOfLines:0]; // unlimited number of lines
+        [[cell textLabel] setLineBreakMode:NSLineBreakByWordWrapping];
+        [[cell textLabel] setFont:[UIFont systemFontOfSize: 18.0]];
     }
     
     cell.textLabel.text = [self.answers objectAtIndex:indexPath.row];
