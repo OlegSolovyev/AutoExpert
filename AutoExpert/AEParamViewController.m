@@ -31,40 +31,55 @@
     if([[AEUserDataManager sharedManager] currentCar].model.automaticTransmission
        && [[AEUserDataManager sharedManager] currentCar].model.manualTransmission){
         [self.kppSwitch setEnabled:YES];
+        [self.kppLabel setText:KPP_TEXT];
+        [self.kppSwitch setOn:YES];
+        [[[AEUserDataManager sharedManager] currentCar] setTransmission:manual];
     } else {
         [self.kppSwitch setEnabled:NO];
         if([[AEUserDataManager sharedManager] currentCar].model.automaticTransmission){
             [self.kppLabel setText:AKPP_TEXT];
             [self.kppSwitch setOn:NO];
+            [[[AEUserDataManager sharedManager] currentCar] setTransmission:automatic];
         } else{
             [self.kppLabel setText:KPP_TEXT];
             [self.kppSwitch setOn:YES];
+            [[[AEUserDataManager sharedManager] currentCar] setTransmission:manual];
         }
     }
     if([[AEUserDataManager sharedManager] currentCar].model.dieselEngine
        && [[AEUserDataManager sharedManager] currentCar].model.gasEngine){
         [self.engineSwitch setEnabled:YES];
+        [self.engineLabel setText:GAS_ENGINE_TEXT];
+        [self.engineSwitch setOn:YES];
+        [[[AEUserDataManager sharedManager] currentCar] setEngine:gasoline];
     } else {
         [self.engineSwitch setEnabled:NO];
         if([[AEUserDataManager sharedManager] currentCar].model.dieselEngine){
             [self.engineLabel setText:DIESEL_ENGINE_TEXT];
             [self.engineSwitch setOn:NO];
+            [[[AEUserDataManager sharedManager] currentCar] setEngine:diesel];
         } else{
             [self.engineLabel setText:GAS_ENGINE_TEXT];
             [self.engineSwitch setOn:YES];
+            [[[AEUserDataManager sharedManager] currentCar] setEngine:gasoline];
         }
     }
     if([[AEUserDataManager sharedManager] currentCar].model.injector
        && [[AEUserDataManager sharedManager] currentCar].model.carburetor){
         [self.injectorSwitch setEnabled:YES];
+        [self.injectorLabel setText:INJECTOR_TEXT];
+        [self.injectorSwitch setOn:YES];
+        [[[AEUserDataManager sharedManager] currentCar] setInjectionType:injector];
     } else {
         [self.injectorSwitch setEnabled:NO];
         if([[AEUserDataManager sharedManager] currentCar].model.injector){
             [self.injectorLabel setText:INJECTOR_TEXT];
             [self.injectorSwitch setOn:YES];
+            [[[AEUserDataManager sharedManager] currentCar] setInjectionType:injector];
         } else{
             [self.injectorLabel setText:CARBURETOR_TEXT];
             [self.injectorSwitch setOn:NO];
+            [[[AEUserDataManager sharedManager] currentCar] setInjectionType:carburetor];
         }
     }
 }

@@ -39,9 +39,30 @@ typedef enum{
     }
 }
 
+- (BOOL)symptomCategoryIsValidForCar:(SymptomCategoryIndex)index{
+    BOOL result = YES;
+    NSLog(@"%d",[[[AEUserDataManager sharedManager] currentCar] injectionType]);
+    switch (index) {
+        case carburetorCategory:
+            if([[[AEUserDataManager sharedManager] currentCar] injectionType] != carburetor){
+                result = NO;
+                NSLog(@"NO");
+            }
+            break;
+        default:
+            break;
+
+    }
+    return result;
+}
+
 - (void)switchToSymptomCategorySelect{
     self.answers = [[NSMutableArray alloc] init];
-    self.answers = [AESymptomDataBaseManager symptomCategoriesArray];
+    for(NSString *category in [AESymptomDataBaseManager symptomCategoriesArray]){
+        if([self symptomCategoryIsValidForCar:[AESymptomDataBaseManager symptomCategoryIndexForName:category]]){
+            [self.answers addObject:category];
+        }
+    }
     [self.questionLabel setText:@"Выберите категорию"];
     self.currentState = symptomCategorySelect;
     [self.tableView reloadData];

@@ -20,6 +20,11 @@ typedef enum{
 } TranmissionType;
 
 typedef enum{
+    carburetor,
+    injector
+} InjectionType;
+
+typedef enum{
     vaz2101,
     vaz2102,
     vaz2103,
@@ -33,11 +38,6 @@ typedef enum{
 } CarModelIndex;
 
 #define NUMBER_OF_MODELS 10
-
-typedef enum{
-    carburetor,
-    injector
-} InjectionType;
 
 @interface AECarModel : NSObject
 
