@@ -10,20 +10,6 @@
 #import "AESymptomSpecification.h"
 #import "AESymptomCause.h"
 
-typedef enum{
-    engine,
-    coolingSystem,
-    fuelSystem,
-    clutch,
-    transmission,
-    suspension,
-    steering,
-    breaking,
-    common
-} SymptomCategoryIndex;
-
-#define NUMBER_OF_SYMPTOM_CATEGORIES 9
-
 @interface AESymptom : NSObject
 
 @property (nonatomic, retain) NSString *name;

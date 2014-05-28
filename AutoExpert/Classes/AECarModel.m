@@ -22,6 +22,7 @@
         self.gasEngine = [AECarsDataBaseManager modelHasGasEngine:modelIndex];
         self.dieselEngine = [AECarsDataBaseManager modelHasDieselEngine:modelIndex];
         self.automaticTransmission = [AECarsDataBaseManager modelHasAutomaticTransmission:modelIndex];
+        self.variatorTransmission = [AECarsDataBaseManager modelHasVariatorTransmission:modelIndex];
         self.manualTransmission = [AECarsDataBaseManager modelHasManualTransmission:modelIndex];
     }
     return self;

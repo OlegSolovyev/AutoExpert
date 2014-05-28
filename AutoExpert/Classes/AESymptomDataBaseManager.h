@@ -20,4 +20,5 @@
 + (NSMutableArray *)symptomCategoriesArray;
 - (NSMutableArray *)symptomsForCategoryIndex:(SymptomCategoryIndex)index;
 - (AESymptom *)symptomForName:(NSString *)name;
+- (AESymptom *)symptomForIndex:(int)index;
 @end

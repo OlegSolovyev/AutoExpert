@@ -20,6 +20,7 @@
         self.index = index;
         self.categoryIndex = categoryIndex;
         self.causes = [causes sortedArrayUsingSelector:@selector(compareProbability:)];
+        self.causes = [causes sortedArrayUsingSelector:@selector(compareLink:)];
         if([models[0] isEqualToString:@"All"]){
             self.models = [[AECarsDataBaseManager sharedManager] modelsArray];
         } else{

@@ -96,7 +96,7 @@
 - (IBAction)kppValueChanged:(id)sender {
     if([self.kppLabel.text isEqualToString:KPP_TEXT]){
         self.kppLabel.text = AKPP_TEXT;
-        [[[AEUserDataManager sharedManager] currentCar] setTransmission:automaticDSG];
+        [[[AEUserDataManager sharedManager] currentCar] setTransmission:automatic];
     } else{
         self.kppLabel.text = KPP_TEXT;
         [[[AEUserDataManager sharedManager] currentCar] setTransmission:manual];

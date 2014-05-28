@@ -15,8 +15,7 @@ typedef enum{
 
 typedef enum{
     manual,
-    automaticHydro,
-    automaticDSG,
+    automatic,
     variator
 } TranmissionType;
 
@@ -53,6 +52,7 @@ typedef enum{
 @property (nonatomic) BOOL gasEngine;
 @property (nonatomic) BOOL dieselEngine;
 @property (nonatomic) BOOL automaticTransmission;
+@property (nonatomic) BOOL variatorTransmission;
 @property (nonatomic) BOOL manualTransmission;
 
 - (id)initWithModelIndex:(CarModelIndex)modelIndex;

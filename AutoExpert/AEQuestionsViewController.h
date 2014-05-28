@@ -13,8 +13,6 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIButton *yesButton;
 @property (weak, nonatomic) IBOutlet UIButton *noButton;
-
-@property (nonatomic, retain) NSMutableArray *causes;
-@property (nonatomic) int currentCause;
+@property (weak, nonatomic) IBOutlet UILabel *symptomLabel;
 
 @end

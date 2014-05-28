@@ -209,6 +209,9 @@ static AECarsDataBaseManager *sharedDataManager = nil;
 + (BOOL)modelHasAutomaticTransmission:(CarModelIndex)modelIndex{
     return NO;
 }
++ (BOOL)modelHasVariatorTransmission:(CarModelIndex)modelIndex{
+    return NO;
+}
 + (BOOL)modelHasManualTransmission:(CarModelIndex)modelIndex{
     return YES;
 }

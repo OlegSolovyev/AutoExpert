@@ -59,12 +59,13 @@ static AESymptomDataBaseManager *sharedDataManager = nil;
             int index = [[allLinedStrings objectAtIndex:i + 2] intValue];
 //            NSLog(@"index : %d", index);
             int categoryIndex = [AESymptomDataBaseManager symptomCategoryIndexForName:[allLinedStrings objectAtIndex:i + 4]];
-//            NSLog(@"Category : %d", categoryIndex);
+            NSLog(@"Category : %d(%@)", categoryIndex, [allLinedStrings objectAtIndex:i + 4]);
             NSString *name = [allLinedStrings objectAtIndex:i + 6];
 //            NSLog(@"Name : %@",name);
             NSMutableArray *causes = [[NSMutableArray alloc] init];
             
             int j = i + 8;
+            
             
             NSArray *causeString = [[NSArray alloc] initWithObjects:@"", nil];
             do{
@@ -72,7 +73,17 @@ static AESymptomDataBaseManager *sharedDataManager = nil;
                 if(![causeString[0] isEqualToString:SYMPTOM_MODELS_STRING]){
                     NSArray *dev = [[causeString objectAtIndex:0] componentsSeparatedByString:@":"];
                     NSString *causeName = dev[0];
-                    int causeProbability = [dev[1] intValue];
+//                    NSLog(@"Loading cause name: %@", causeName);
+                    if([dev count] > 1){
+                        dev = [[dev objectAtIndex:1] componentsSeparatedByString:@"$"];
+                    } else NSLog(@"ERROR: no ':' in cause %@", causeString[j]);
+                    int causeProbability = [dev[0] intValue];
+//                    NSLog(@"Loading cause probability: %d", causeProbability);
+                    int link;
+                    if([dev count] > 1){
+                        link = [dev[1] intValue];
+//                        NSLog(@"Loading cause index: %d", index);
+                    } else NSLog(@"ERROR: no '$' in cause %@", causeString[j]);
                     NSMutableArray *tags = [[NSMutableArray alloc] init];
                     if(causeString.count > 1){
                         for(int k = 1; k < causeString.count; ++k){
@@ -83,12 +94,14 @@ static AESymptomDataBaseManager *sharedDataManager = nil;
                     }
                         [causes addObject:[[AESymptomCause alloc] initWithName:causeName
                                                                           tags:tags
-                                                                   probability:causeProbability]];
+                                                                   probability:causeProbability
+                                                                 link:link]];
                 
                 }
                 j++;
             } while (![[causeString objectAtIndex:0] isEqualToString:SYMPTOM_MODELS_STRING]);
-                
+//            NSLog(@"Causes Loaded");
+            
             
             NSArray *models = [[allLinedStrings objectAtIndex:j] componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:SEPARATOR]];
             
@@ -117,6 +130,9 @@ static AESymptomDataBaseManager *sharedDataManager = nil;
 + (NSString *)nameForSymptomCategoryIndex:(SymptomCategoryIndex)symptomCategoryIndex{
     NSString *result;
     switch (symptomCategoryIndex) {
+        case common:
+            result = @"Общее";
+            break;
         case engine:
             result = @"Двигатель";
             break;
@@ -141,8 +157,17 @@ static AESymptomDataBaseManager *sharedDataManager = nil;
         case breaking:
             result = @"Тормозная система";
             break;
-        case common:
-            result = @"Общее";
+        case carburetorCategory:
+            result = @"Карбюратор";
+            break;
+        case starter:
+            result = @"Стартер";
+            break;
+        case exhaustRecirculation:
+            result = @"РОГ";
+            break;
+        case ignition:
+            result = @"Зажигание";
             break;
             
         default:
@@ -160,10 +185,21 @@ static AESymptomDataBaseManager *sharedDataManager = nil;
 }
 
 - (NSMutableArray *)symptomsForCategoryIndex:(SymptomCategoryIndex)index{
+    NSLog(@"Symptoms for category index %d",index);
     NSMutableArray *result = [[NSMutableArray alloc] init];
     for(AESymptom *symptom in self.symptoms){
         if(symptom.categoryIndex == index){
             [result addObject:symptom];
+        }
+    }
+    return result;
+}
+
+- (AESymptom *)symptomForIndex:(int)index{
+    AESymptom *result;
+    for(AESymptom *symptom in self.symptoms){
+        if(symptom.index == index){
+            result = symptom;
         }
     }
     return result;

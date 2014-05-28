@@ -24,6 +24,7 @@
 + (BOOL)modelHasGasEngine:(CarModelIndex)modelIndex;
 + (BOOL)modelHasDieselEngine:(CarModelIndex)modelIndex;
 + (BOOL)modelHasAutomaticTransmission:(CarModelIndex)modelIndex;
++ (BOOL)modelHasVariatorTransmission:(CarModelIndex)modelIndex;
 + (BOOL)modelHasManualTransmission:(CarModelIndex)modelIndex;
 
 @property (nonatomic, retain) NSMutableArray *modelsArray;

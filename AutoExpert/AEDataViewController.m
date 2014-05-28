@@ -11,8 +11,13 @@
 #import "AEUserDataManager.h"
 #import "AEQuestionsViewController.h"
 
-@interface AEDataViewController ()
+typedef enum{
+    symptomCategorySelect,
+    symptomSelect,
+} state;
 
+@interface AEDataViewController ()
+@property (nonatomic) state currentState;
 @end
 
 @implementation AEDataViewController
@@ -78,7 +83,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.answers count];
+        return [self.answers count];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
