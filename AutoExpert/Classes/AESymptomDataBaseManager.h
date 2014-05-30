@@ -18,7 +18,9 @@
 + (NSString *)nameForSymptomCategoryIndex:(SymptomCategoryIndex)symptomCategoryIndex;
 + (SymptomCategoryIndex)symptomCategoryIndexForName:(NSString *)name;
 + (NSMutableArray *)symptomCategoriesArray;
+- (NSMutableArray *)allSymptomsForCurrentCar;
 - (NSMutableArray *)symptomsForCategoryIndex:(SymptomCategoryIndex)index;
 - (AESymptom *)symptomForName:(NSString *)name;
 - (AESymptom *)symptomForIndex:(int)index;
+- (BOOL)symptomCategoryIsValidForCar:(SymptomCategoryIndex)index;
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "AESymptomDataBaseManager.h"
+#import "AEUserDataManager.h"
 
 #define NEW_SYPMTOM_STRING @"Symptom"
 #define SYMPTOM_INDEX_STRING @"Index:"
@@ -213,6 +214,35 @@ static AESymptomDataBaseManager *sharedDataManager = nil;
     }
     NSLog(@"-symptomForName ERROR: symptom '%@' not found", name);
     return nil;
+}
+
+- (BOOL)symptomCategoryIsValidForCar:(SymptomCategoryIndex)index{
+    BOOL result = YES;
+    NSLog(@"%d",[[[AEUserDataManager sharedManager] currentCar] injectionType]);
+    switch (index) {
+        case carburetorCategory:
+            if([[[AEUserDataManager sharedManager] currentCar] injectionType] != carburetor){
+                result = NO;
+                NSLog(@"NO");
+            }
+            break;
+        default:
+            break;
+            
+    }
+    return result;
+}
+
+- (NSMutableArray *)allSymptomsForCurrentCar{
+    NSMutableArray *result = [[NSMutableArray alloc] init];
+    NSLog(@"-allSymptoms");
+    for(AESymptom *symptom in self.symptoms){
+        if([symptom.models containsObject:[[[[AEUserDataManager sharedManager] currentCar] model] name]]
+           && [self symptomCategoryIsValidForCar:symptom.categoryIndex]){
+            [result addObject:symptom];
+        }
+    }
+    return result;
 }
 
 @end

@@ -34,4 +34,24 @@
     
     return  self;
 }
+
+//- (id)copyWithZone:(NSZone *)zone
+//{
+//    id copy = [[[self class] alloc] init];
+//    
+//    if (copy)
+//    {
+//        // Copy NSObject subclasses
+//        [copy setName:[self.name copyWithZone:zone]];
+//        [copy setCauses:[self.causes copyWithZone:zone]];
+//        [copy setModels:[self.models copyWithZone:zone]];
+//        
+//        // Set primitives
+//        [copy setIndex:self.index];
+//        [copy setCategoryIndex:self.categoryIndex];
+//    }
+//    
+//    return copy;
+//}
+
 @end

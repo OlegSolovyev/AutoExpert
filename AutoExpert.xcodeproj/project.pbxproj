@@ -17,7 +17,6 @@
 		7FAF6C9E189F9EBA00342F14 /* AEAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FAF6C9D189F9EBA00342F14 /* AEAppDelegate.m */; };
 		7FAF6CA1189F9EBA00342F14 /* AERootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FAF6CA0189F9EBA00342F14 /* AERootViewController.m */; };
 		7FAF6CA4189F9EBA00342F14 /* AEDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FAF6CA3189F9EBA00342F14 /* AEDataViewController.m */; };
-		7FAF6CAA189F9EBA00342F14 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FAF6CA8189F9EBA00342F14 /* Main_iPhone.storyboard */; };
 		7FAF6CAD189F9EBA00342F14 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FAF6CAB189F9EBA00342F14 /* Main_iPad.storyboard */; };
 		7FAF6CAF189F9EBA00342F14 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FAF6CAE189F9EBA00342F14 /* Images.xcassets */; };
 		7FAF6CB6189F9EBA00342F14 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FAF6CB5189F9EBA00342F14 /* XCTest.framework */; };
@@ -28,6 +27,7 @@
 		7FAF6CD4189FA10200342F14 /* AECar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FAF6CD3189FA10200342F14 /* AECar.m */; };
 		7FAF6CD7189FA14400342F14 /* AEUserDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FAF6CD6189FA14400342F14 /* AEUserDataManager.m */; };
 		7FB74BB318D738EB005FF76C /* AECarsDataBaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB74BB218D738EB005FF76C /* AECarsDataBaseManager.m */; };
+		7FE420A31938C68500AEC866 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FE420A21938C68500AEC866 /* Main_iPhone.storyboard */; };
 		F8BC5E4519326B3C0007BC5B /* AESymptom.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BC5E4419326B3C0007BC5B /* AESymptom.m */; };
 		F8BC5E4E19327FD20007BC5B /* AESymptomDataBaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BC5E4D19327FD20007BC5B /* AESymptomDataBaseManager.m */; };
 		F8BC5E5019329DB40007BC5B /* SymptomsDataBase.txt in Resources */ = {isa = PBXBuildFile; fileRef = F8BC5E4F19329DB40007BC5B /* SymptomsDataBase.txt */; };
@@ -65,7 +65,6 @@
 		7FAF6CA0189F9EBA00342F14 /* AERootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AERootViewController.m; sourceTree = "<group>"; };
 		7FAF6CA2189F9EBA00342F14 /* AEDataViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEDataViewController.h; sourceTree = "<group>"; };
 		7FAF6CA3189F9EBA00342F14 /* AEDataViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEDataViewController.m; sourceTree = "<group>"; };
-		7FAF6CA9189F9EBA00342F14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		7FAF6CAC189F9EBA00342F14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		7FAF6CAE189F9EBA00342F14 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7FAF6CB4189F9EBA00342F14 /* AutoExpertTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AutoExpertTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,6 +78,7 @@
 		7FAF6CD6189FA14400342F14 /* AEUserDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AEUserDataManager.m; sourceTree = "<group>"; };
 		7FB74BB118D738EB005FF76C /* AECarsDataBaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AECarsDataBaseManager.h; sourceTree = "<group>"; };
 		7FB74BB218D738EB005FF76C /* AECarsDataBaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AECarsDataBaseManager.m; sourceTree = "<group>"; };
+		7FE420A21938C68500AEC866 /* Main_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPhone.storyboard; sourceTree = "<group>"; };
 		F8BC5E4319326B3C0007BC5B /* AESymptom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AESymptom.h; sourceTree = "<group>"; };
 		F8BC5E4419326B3C0007BC5B /* AESymptom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AESymptom.m; sourceTree = "<group>"; };
 		F8BC5E4C19327FD20007BC5B /* AESymptomDataBaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AESymptomDataBaseManager.h; sourceTree = "<group>"; };
@@ -162,7 +162,7 @@
 				7FAF6CA3189F9EBA00342F14 /* AEDataViewController.m */,
 				F8BC5E511932B4D30007BC5B /* AEQuestionsViewController.h */,
 				F8BC5E521932B4D30007BC5B /* AEQuestionsViewController.m */,
-				7FAF6CA8189F9EBA00342F14 /* Main_iPhone.storyboard */,
+				7FE420A21938C68500AEC866 /* Main_iPhone.storyboard */,
 				7FAF6CAB189F9EBA00342F14 /* Main_iPad.storyboard */,
 				7FAF6CAE189F9EBA00342F14 /* Images.xcassets */,
 				7F88587E19354DC000432A24 /* AE.png */,
@@ -306,9 +306,9 @@
 			files = (
 				7FAF6CAD189F9EBA00342F14 /* Main_iPad.storyboard in Resources */,
 				7FAF6CAF189F9EBA00342F14 /* Images.xcassets in Resources */,
+				7FE420A31938C68500AEC866 /* Main_iPhone.storyboard in Resources */,
 				F8BC5E5019329DB40007BC5B /* SymptomsDataBase.txt in Resources */,
 				7F88587F19354DC000432A24 /* AE.png in Resources */,
-				7FAF6CAA189F9EBA00342F14 /* Main_iPhone.storyboard in Resources */,
 				7FAF6C98189F9EBA00342F14 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -370,14 +370,6 @@
 				7FAF6C97189F9EBA00342F14 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		7FAF6CA8189F9EBA00342F14 /* Main_iPhone.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7FAF6CA9189F9EBA00342F14 /* Base */,
-			);
-			name = Main_iPhone.storyboard;
 			sourceTree = "<group>";
 		};
 		7FAF6CAB189F9EBA00342F14 /* Main_iPad.storyboard */ = {
