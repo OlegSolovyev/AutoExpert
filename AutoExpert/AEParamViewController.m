@@ -89,7 +89,7 @@
 }
 
 - (IBAction)engineValueChanged:(id)sender {
-    if([self.engineLabel.text isEqualToString:GAS_ENGINE_TEXT]){
+    if(![sender isOn]){
         self.engineLabel.text = DIESEL_ENGINE_TEXT;
         [[[AEUserDataManager sharedManager] currentCar] setEngine:diesel];
     } else{
@@ -99,7 +99,7 @@
 }
 
 - (IBAction)injectorValueChanged:(id)sender {
-    if([self.injectorLabel.text isEqualToString:INJECTOR_TEXT]){
+    if(![sender isOn]){
         self.injectorLabel.text = CARBURETOR_TEXT;
         [[[AEUserDataManager sharedManager] currentCar] setInjectionType:carburetor];
     } else{
@@ -109,7 +109,7 @@
 }
 
 - (IBAction)kppValueChanged:(id)sender {
-    if([self.kppLabel.text isEqualToString:KPP_TEXT]){
+    if(![sender isOn]){
         self.kppLabel.text = AKPP_TEXT;
         [[[AEUserDataManager sharedManager] currentCar] setTransmission:automatic];
     } else{
