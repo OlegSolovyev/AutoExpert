@@ -26,11 +26,12 @@
     [self.scrollView setScrollEnabled:TRUE];
     [self.scrollView setContentSize:CGSizeMake(320, 1000)];
     
+    [[AESymptomDataBaseManager sharedManager] loadSymptoms];
+    
 }
 
 - (void)viewDidUnload{
     [super viewDidUnload];
-    [AESymptomDataBaseManager sharedManager];
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView

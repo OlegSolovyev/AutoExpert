@@ -165,10 +165,11 @@ typedef enum{
 
 - (void)resizeTableView{
     CGFloat tableHeight = 0.0f;
-    int num = self.currentState == symptomCategorySelect ? 9 : 5;
+    int num = self.currentState == symptomCategorySelect ? 8 : 5;
     for (int i = 0; i < [self.answers count]; i ++) {
        if(i < num)tableHeight += [self tableView:self.tableView heightForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
     }
+    if(self.answers.count != 0)tableHeight -= [self tableView:self.tableView heightForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]] / 20;
     self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.frame.size.width, tableHeight);
 }
 
