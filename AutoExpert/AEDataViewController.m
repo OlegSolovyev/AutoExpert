@@ -13,13 +13,15 @@
 
 typedef enum{
     symptomCategorySelect,
-    symptomSelect,
+    symptomSelect
 } state;
 
-@interface AEDataViewController () <UISearchDisplayDelegate, UISearchBarDelegate>
+@interface AEDataViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
 @property (nonatomic) state currentState;
+@property (nonatomic, retain) NSMutableArray *answers;
 @property (retain, nonatomic) NSMutableArray *searchResults;
-@property (nonatomic) CGRect searchBarDefaultFrame;
+@property (nonatomic) BOOL isSearching;
+//@property (nonatomic) CGRect searchBarDefaultFrame;
 @end
 
 @implementation AEDataViewController
@@ -29,12 +31,7 @@ typedef enum{
     [super viewDidLoad];
     [self switchToSymptomCategorySelect];
     self.searchResults = [[NSMutableArray alloc] init];
-    [self.searchDisplayController.searchBar setFrame:CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y - self.searchDisplayController.searchBar.frame.size.height, self.tableView.frame.size.width, self.searchDisplayController.searchBar.frame.size.height)];
-    float osVersion = [[[UIDevice currentDevice] systemVersion] floatValue];
-    if (osVersion >= 7.0)
-    {
-        self.navigationController.navigationBar.translucent = NO;
-    }
+    [self.searchBar setShowsCancelButton:NO];
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"< Назад" style:UIBarButtonItemStylePlain target:self action:@selector(backButtonAction:)];
 }
@@ -63,116 +60,91 @@ typedef enum{
             NSString *search = [symptomString capitalizedString];
             if([name rangeOfString:search].location != NSNotFound){
                 [self.searchResults addObject:symptom.name];
-                NSLog(@"++");
             }
         }
     } else{
         NSLog(@"-searchForSymptom error: unhanled case");
     }
     NSLog(@"Search end %d", self.searchResults.count);
+    [self.tableView reloadData];
 }
 
 
 /////////////////////
 
-- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
-{
+//- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+//{
+//    
+//    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+//        controller.searchResultsTableView.frame = self.tableView.frame;
+//        [controller.searchContentsController.view setNeedsLayout];
+//    }
+//    [self searchForSymptom:searchString];
+//    return YES;
+//}
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    self.isSearching = YES;
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    NSLog(@"Text did change");
+    //Remove all objects first.
+    [self.searchResults removeAllObjects];
     
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
-        controller.searchResultsTableView.frame = self.tableView.frame;
-        [controller.searchContentsController.view setNeedsLayout];
+    if([searchText length] != 0) {
+        self.isSearching = YES;
+        [self searchForSymptom:searchBar.text];
     }
-    [self searchForSymptom:searchString];
+    else {
+        self.isSearching = NO;
+        [self.searchBar resignFirstResponder];
+        NSLog(@"Nil text");
+    }
+}
+
+- (void)setIsSearching:(BOOL)isSearching{
+    _isSearching = isSearching;
+    if(isSearching){
+        [self.questionLabel setText:@"Результаты"];
+        [self.searchBar setShowsCancelButton:YES];
+    } else{
+        if(self.currentState == symptomCategorySelect){
+            [self.questionLabel setText:@"Выберите категорию"];
+        } else{
+            [self.questionLabel setText:@"Выберите неисправность"];
+        }
+        [self.searchBar setShowsCancelButton:NO];
+    }
+    [_tableView reloadData];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    NSLog(@"Cancel clicked");
+    [self.searchBar setText:@""];
+    [self.searchResults removeAllObjects];
+    [self.searchBar resignFirstResponder];
+    self.isSearching = NO;
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    NSLog(@"Search Clicked");
+    [self searchForSymptom:searchBar.text];
+}
+
+- (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar {
+    NSLog(@"Should end editing");
+    [searchBar resignFirstResponder];
     return YES;
 }
 
-- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
-{
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
+    NSLog(@"Did end editing");
     [searchBar resignFirstResponder];
+    self.isSearching = NO;
 }
 
-static UIView *PSPDFViewWithSuffix(UIView *view, NSString *classNameSuffix) {
-    if (!view || classNameSuffix.length == 0) return nil;
-    
-    UIView *theView = nil;
-    for (__unsafe_unretained UIView *subview in view.subviews) {
-        if ([NSStringFromClass(subview.class) hasSuffix:classNameSuffix]) {
-            return subview;
-        }else {
-            if ((theView = PSPDFViewWithSuffix(subview, classNameSuffix))) break;
-        }
-    }
-    return theView;
-}
-
-- (void)searchDisplayController:(UISearchDisplayController *)controller didShowSearchResultsTableView:(UITableView *)tableView {
-    // HACK: iOS 7 requires a cruel workaround to show the search table view.
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
-        controller.searchResultsTableView.contentInset = UIEdgeInsetsMake(self.searchDisplayController.searchBar.frame.size.height, 0.f, 0.f, 0.f);
-    }
-//    tableView.frame = self.tableView.frame;
-}
-
-- (void)correctSearchDisplayFrames {
-    // Update search bar frame.
-    CGRect superviewFrame = self.searchDisplayController.searchBar.superview.frame;
-    superviewFrame.origin.y = 0.f;
-    self.searchDisplayController.searchBar.superview.frame = superviewFrame;
-    
-    // Strech dimming view.
-    UIView *dimmingView = PSPDFViewWithSuffix(self.view, @"DimmingView");
-    if (dimmingView) {
-        CGRect dimmingFrame = dimmingView.superview.frame;
-        dimmingFrame.origin.y = self.searchDisplayController.searchBar.frame.size.height;
-        dimmingFrame.size.height = self.view.frame.size.height - dimmingFrame.origin.y;
-        dimmingView.superview.frame = dimmingFrame;
-    }
-}
-
-- (void)setAllViewsExceptSearchHidden:(BOOL)hidden animated:(BOOL)animated {
-    [UIView animateWithDuration:animated ? 0.25f : 0.f animations:^{
-        for (UIView *view in self.tableView.subviews) {
-            if (view != self.searchDisplayController.searchResultsTableView &&
-                view != self.searchDisplayController.searchBar) {
-                view.alpha = hidden ? 0.f : 1.f;
-            }
-        }
-    }];
-}
-
-// This fixes UISearchBarController on iOS 7. rdar://14800556
-- (void)correctFramesForSearchDisplayControllerBeginSearch:(BOOL)beginSearch {
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
-        [self.navigationController setNavigationBarHidden:beginSearch animated:YES];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self correctSearchDisplayFrames];
-        });
-        [self setAllViewsExceptSearchHidden:beginSearch animated:YES];
-        [UIView animateWithDuration:0.25f animations:^{
-            self.searchDisplayController.searchResultsTableView.alpha = beginSearch ? 1.f : 0.f;
-        }];
-    }
-}
-
-
-- (void)searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller {
-    [self correctFramesForSearchDisplayControllerBeginSearch:YES];
-}
-
-- (void)searchDisplayControllerDidBeginSearch:(UISearchDisplayController *)controller {
-    [self correctSearchDisplayFrames];
-}
-
-- (void)searchDisplayControllerWillEndSearch:(UISearchDisplayController *)controller {
-    [self correctFramesForSearchDisplayControllerBeginSearch:NO];
-}
-
-- (void)searchDisplayController:(UISearchDisplayController *)controller didLoadSearchResultsTableView:(UITableView *)tableView
-{
-    tableView.rowHeight = 70.;
-}
-
-////////////////////////////////
+///////////////////////
 
 - (void)switchToSymptomCategorySelect{
     self.answers = [[NSMutableArray alloc] init];
@@ -223,7 +195,7 @@ static UIView *PSPDFViewWithSuffix(UIView *view, NSString *classNameSuffix) {
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if(tableView == self.tableView){
+    if(!self.isSearching){
         return [self.answers count];
     } else{
         return [self.searchResults count];
@@ -252,7 +224,7 @@ static UIView *PSPDFViewWithSuffix(UIView *view, NSString *classNameSuffix) {
         [[cell textLabel] setFont:[UIFont systemFontOfSize: 18.0]];
     }
     
-    if(tableView == self.tableView){
+    if(!self.isSearching){
         cell.textLabel.text = [self.answers objectAtIndex:indexPath.row];
     } else{
         cell.textLabel.text = [self.searchResults objectAtIndex:indexPath.row];
@@ -263,7 +235,7 @@ static UIView *PSPDFViewWithSuffix(UIView *view, NSString *classNameSuffix) {
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 //    self.selectCounter++;
     int row = indexPath.row;
-    if(tableView == self.tableView){
+    if(!self.isSearching){
         switch (self.currentState) {
             case symptomCategorySelect:{
                 [[AEUserDataManager sharedManager] setSelectedSymptomCategoryIndex:row];
@@ -280,8 +252,14 @@ static UIView *PSPDFViewWithSuffix(UIView *view, NSString *classNameSuffix) {
                 break;
         }
     } else{
-        [[AEUserDataManager sharedManager] setSelectedSymptom:[[AESymptomDataBaseManager sharedManager] symptomForName:[[[tableView cellForRowAtIndexPath:indexPath] textLabel] text]]];
-        [self finish];
+        if(self.currentState == symptomSelect){
+            [[AEUserDataManager sharedManager] setSelectedSymptom:[[AESymptomDataBaseManager sharedManager] symptomForName:[[[tableView cellForRowAtIndexPath:indexPath] textLabel] text]]];
+            [self finish];
+        } else if(self.currentState == symptomCategorySelect){
+            [self.searchBar resignFirstResponder];
+            [[AEUserDataManager sharedManager] setSelectedSymptomCategoryIndex:row];
+            [self switchToSymptomSelect];
+        }
     }
 }
 
@@ -290,7 +268,8 @@ static UIView *PSPDFViewWithSuffix(UIView *view, NSString *classNameSuffix) {
     NSString * viewControllerID = @"Questions";
     UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
     AEQuestionsViewController *controller = (AEQuestionsViewController *)[storyboard instantiateViewControllerWithIdentifier:viewControllerID];
-//    [self pushViewController:controller animated:NO completion:nil];
+    [self.searchBar resignFirstResponder];
+    self.isSearching = NO;
     [self.navigationController pushViewController:controller animated:YES];
     NSLog(@"Selected symptom : %@", [[[AEUserDataManager sharedManager] selectedSymptom] name]);
 }

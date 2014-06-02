@@ -10,6 +10,7 @@
 #import "AEDataViewController.h"
 #import "AECarsDataBaseManager.h"
 #import "AEUserDataManager.h"
+#import "AESymptomDataBaseManager.h"
 
 @implementation AERootViewController
 
@@ -29,7 +30,7 @@
 
 - (void)viewDidUnload{
     [super viewDidUnload];
-    
+    [AESymptomDataBaseManager sharedManager];
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
