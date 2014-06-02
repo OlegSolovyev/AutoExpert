@@ -72,17 +72,6 @@ typedef enum{
 
 /////////////////////
 
-//- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
-//{
-//    
-//    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
-//        controller.searchResultsTableView.frame = self.tableView.frame;
-//        [controller.searchContentsController.view setNeedsLayout];
-//    }
-//    [self searchForSymptom:searchString];
-//    return YES;
-//}
-
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
     self.isSearching = YES;
 }
@@ -130,6 +119,7 @@ typedef enum{
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     NSLog(@"Search Clicked");
     [self searchForSymptom:searchBar.text];
+    [self.searchBar resignFirstResponder];
 }
 
 - (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar {
@@ -141,7 +131,7 @@ typedef enum{
 - (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
     NSLog(@"Did end editing");
     [searchBar resignFirstResponder];
-    self.isSearching = NO;
+    if([searchBar.text isEqualToString:@""])self.isSearching = NO;
 }
 
 ///////////////////////
@@ -204,7 +194,11 @@ typedef enum{
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return (self.currentState == symptomCategorySelect) ? 40. : 70.;
+    if(self.isSearching){
+        return 60.;
+    } else{
+        return (self.currentState == symptomCategorySelect) ? 40. : 70.;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -252,14 +246,8 @@ typedef enum{
                 break;
         }
     } else{
-        if(self.currentState == symptomSelect){
             [[AEUserDataManager sharedManager] setSelectedSymptom:[[AESymptomDataBaseManager sharedManager] symptomForName:[[[tableView cellForRowAtIndexPath:indexPath] textLabel] text]]];
             [self finish];
-        } else if(self.currentState == symptomCategorySelect){
-            [self.searchBar resignFirstResponder];
-            [[AEUserDataManager sharedManager] setSelectedSymptomCategoryIndex:row];
-            [self switchToSymptomSelect];
-        }
     }
 }
 
@@ -269,6 +257,7 @@ typedef enum{
     UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
     AEQuestionsViewController *controller = (AEQuestionsViewController *)[storyboard instantiateViewControllerWithIdentifier:viewControllerID];
     [self.searchBar resignFirstResponder];
+    [self.searchBar setText:@""];
     self.isSearching = NO;
     [self.navigationController pushViewController:controller animated:YES];
     NSLog(@"Selected symptom : %@", [[[AEUserDataManager sharedManager] selectedSymptom] name]);
