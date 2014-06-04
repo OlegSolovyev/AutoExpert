@@ -138,3 +138,367 @@ Hydro:
 0;0
 Variator:
 0;0
+
+Model
+Index:
+5
+Brand:
+ВАЗ
+Name:
+2106
+Min Year:
+1976
+Max Year:
+2006
+Diesel:
+0;0
+Gas:
+1;0
+Injector:
+0;0
+Carburetor:
+1;0
+Manual Transmission:
+1;0
+DSG:
+0;0
+Hydro:
+0;0
+Variator:
+0;0
+
+Model
+Index:
+6
+Brand:
+ВАЗ
+Name:
+2107
+Min Year:
+1982
+Max Year:
+2012
+Diesel:
+0;0
+Gas:
+1;0
+Injector:
+1;2004
+Carburetor:
+1;0
+Manual Transmission:
+1;0
+DSG:
+0;0
+Hydro:
+0;0
+Variator:
+0;0
+
+Model
+Index:
+7
+Brand:
+ВАЗ
+Name:
+2108
+Min Year:
+1984
+Max Year:
+2003
+Diesel:
+0;0
+Gas:
+1;0
+Injector:
+1;1994
+Carburetor:
+1;0
+Manual Transmission:
+1;0
+DSG:
+0;0
+Hydro:
+0;0
+Variator:
+0;0
+
+Model
+Index:
+8
+Brand:
+ВАЗ
+Name:
+2109
+Min Year:
+1987
+Max Year:
+2006
+Diesel:
+0;0
+Gas:
+1;0
+Injector:
+1;1994
+Carburetor:
+1;0
+Manual Transmission:
+1;0
+DSG:
+0;0
+Hydro:
+0;0
+Variator:
+0;0
+
+Model
+Index:
+9
+Brand:
+ВАЗ
+Name:
+21099
+Min Year:
+1990
+Max Year:
+2004
+Diesel:
+0;0
+Gas:
+1;0
+Injector:
+1;1994
+Carburetor:
+1;0
+Manual Transmission:
+1;0
+DSG:
+0;0
+Hydro:
+0;0
+Variator:
+0;0
+
+Model
+Index:
+10
+Brand:
+ВАЗ
+Name:
+2110
+Min Year:
+1995
+Max Year:
+2007
+Diesel:
+0;0
+Gas:
+1;0
+Injector:
+1;2002
+Carburetor:
+1;0
+Manual Transmission:
+1;0
+DSG:
+0;0
+Hydro:
+0;0
+Variator:
+0;0
+
+Model
+Index:
+11
+Brand:
+ВАЗ
+Name:
+2111
+Min Year:
+1998
+Max Year:
+2009
+Diesel:
+0;0
+Gas:
+1;0
+Injector:
+1;2002
+Carburetor:
+1;0
+Manual Transmission:
+1;0
+DSG:
+0;0
+Hydro:
+0;0
+Variator:
+0;0
+
+Model
+Index:
+12
+Brand:
+ВАЗ
+Name:
+2112
+Min Year:
+1999
+Max Year:
+2008
+Diesel:
+0;0
+Gas:
+1;0
+Injector:
+1;2002
+Carburetor:
+1;0
+Manual Transmission:
+1;0
+DSG:
+0;0
+Hydro:
+0;0
+Variator:
+0;0
+
+Model
+Index:
+13
+Brand:
+ВАЗ
+Name:
+2113
+Min Year:
+2004
+Max Year:
+2013
+Diesel:
+0;0
+Gas:
+1;0
+Injector:
+1;0
+Carburetor:
+1;0
+Manual Transmission:
+1;0
+DSG:
+0;0
+Hydro:
+0;0
+Variator:
+0;0
+
+Model
+Index:
+14
+Brand:
+ВАЗ
+Name:
+2114
+Min Year:
+2003
+Max Year:
+2013
+Diesel:
+0;0
+Gas:
+1;0
+Injector:
+1;0
+Carburetor:
+1;0
+Manual Transmission:
+1;0
+DSG:
+0;0
+Hydro:
+0;0
+Variator:
+0;0
+
+Model
+Index:
+15
+Brand:
+ВАЗ
+Name:
+2115
+Min Year:
+2000
+Max Year:
+2013
+Diesel:
+0;0
+Gas:
+1;0
+Injector:
+1;0
+Carburetor:
+1;0
+Manual Transmission:
+1;0
+DSG:
+0;0
+Hydro:
+0;0
+Variator:
+0;0
+
+Model
+Index:
+16
+Brand:
+ВАЗ
+Name:
+2121
+Min Year:
+1977
+Max Year:
+0
+Diesel:
+0;0
+Gas:
+1;0
+Injector:
+1;2003
+Carburetor:
+1;0
+Manual Transmission:
+1;0
+DSG:
+0;0
+Hydro:
+0;0
+Variator:
+0;0
+
+Model
+Index:
+17
+Brand:
+ГАЗ
+Name:
+2217
+Min Year:
+1997
+Max Year:
+0
+Diesel:
+0;0
+Gas:
+1;0
+Injector:
+1;0
+Carburetor:
+1;0
+Manual Transmission:
+1;0
+DSG:
+0;0
+Hydro:
+0;0
+Variator:
+0;0

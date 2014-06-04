@@ -31,6 +31,7 @@ typedef enum{
 
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) NSArray *tags;
+@property (nonatomic, retain) NSArray *factors;
 @property (nonatomic) int probability;
 @property (nonatomic) int link;
 
@@ -44,6 +45,7 @@ typedef enum{
 
 - (id)initWithName:(NSString *)name
               tags:(NSArray *)tags
+           factors:(NSArray *)factors
        probability:(int)probability
      link:(int)link;
 

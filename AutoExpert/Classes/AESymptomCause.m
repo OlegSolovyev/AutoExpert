@@ -19,6 +19,7 @@
 @implementation AESymptomCause
 - (id)initWithName:(NSString *)name
               tags:(NSArray *)tags
+           factors:(NSArray *)factors
        probability:(int)probability
               link:(int)link{
     if(self = [super init]){
@@ -34,8 +35,15 @@
         self.injector = FALSE;
         self.carburetor = FALSE;
         
+        self.tags = tags;
+        self.factors = factors;
+        for(NSString *factor in factors){
+            NSLog(@"Factor: %@", factor);
+        }
+        
         if(tags){
             for(NSString *tag in tags){
+//                NSLog(@"TAG %@",tag);
                 if([tag isEqualToString:CAUSE_TAG_AKPP]){
                     self.automaticTransmission = TRUE;
                 } else if([tag isEqualToString:CAUSE_TAG_RKPP]){

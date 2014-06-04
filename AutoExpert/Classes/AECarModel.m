@@ -38,7 +38,12 @@
         self.brand = brand;
         self.name = name;
         self.minYear = minYear;
-        self.maxYear = maxYear;
+        
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"yyyy"];
+        NSString *yearString = [formatter stringFromDate:[NSDate date]];
+        
+        self.maxYear = (maxYear != 0) ? maxYear : [yearString intValue];
         self.injector = injector;
         self.injectorYear = (injectorYear != 0) ? injectorYear : minYear;
         self.carburetor = carburetor;

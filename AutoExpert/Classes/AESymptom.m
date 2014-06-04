@@ -23,15 +23,15 @@
         self.causes = [causes sortedArrayUsingSelector:@selector(compareLink:)];
         if([models[0] isEqualToString:@"All"]){
             self.models = [[AECarsDataBaseManager sharedManager] models];
-            for(AECarModel *model in self.models){
-                NSLog(@"MODEL: %@", model.name);
-            }
+//            for(AECarModel *model in self.models){
+//                NSLog(@"MODEL: %@", model.name);
+//            }
         } else{
             self.models = models;
         }
-        for(AESymptomCause *cause in self.causes){
-            NSLog(@"%@",cause.name);
-        }
+//        for(AESymptomCause *cause in self.causes){
+//            NSLog(@"%@",cause.name);
+//        }
 
     }
     

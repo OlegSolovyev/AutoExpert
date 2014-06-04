@@ -67,10 +67,11 @@ static AESymptomDataBaseManager *sharedDataManager = nil;
             
             int j = i + 8;
             
-            
+            NSArray *firstSeparation = [[NSArray alloc] initWithObjects:@"", nil];
             NSArray *causeString = [[NSArray alloc] initWithObjects:@"", nil];
             do{
-                causeString = [[allLinedStrings objectAtIndex:j] componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:SEPARATOR]];
+                firstSeparation = [[allLinedStrings objectAtIndex:j] componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"&"]];
+                causeString = [[firstSeparation objectAtIndex:0] componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:SEPARATOR]];
                 if(![causeString[0] isEqualToString:SYMPTOM_MODELS_STRING]){
                     NSArray *dev = [[causeString objectAtIndex:0] componentsSeparatedByString:@":"];
                     NSString *causeName = dev[0];
@@ -86,15 +87,25 @@ static AESymptomDataBaseManager *sharedDataManager = nil;
 //                        NSLog(@"Loading cause index: %d", index);
                     } else NSLog(@"ERROR: no '$' in cause %@", causeString[j]);
                     NSMutableArray *tags = [[NSMutableArray alloc] init];
+                    NSMutableArray *factors = [[NSMutableArray alloc] init];
                     if(causeString.count > 1){
                         for(int k = 1; k < causeString.count; ++k){
-                            [tags addObject:[causeString objectAtIndex:k]];
+                                [tags addObject:[causeString objectAtIndex:k]];
                         }
                     } else{
                         tags = nil;
                     }
+                    
+                    if(firstSeparation.count > 1){
+                            for(int l = 1; l < firstSeparation.count; ++l){
+                                [factors addObject:[firstSeparation objectAtIndex:l]];
+                            }
+                    } else{
+                        factors = nil;
+                    }
                         [causes addObject:[[AESymptomCause alloc] initWithName:causeName
                                                                           tags:tags
+                                                                       factors:factors
                                                                    probability:causeProbability
                                                                  link:link]];
                 
@@ -218,7 +229,6 @@ static AESymptomDataBaseManager *sharedDataManager = nil;
 
 - (BOOL)symptomCategoryIsValidForCar:(SymptomCategoryIndex)index{
     BOOL result = YES;
-    NSLog(@"%d",[[[AEUserDataManager sharedManager] currentCar] injectionType]);
     switch (index) {
         case carburetorCategory:
             if([[[AEUserDataManager sharedManager] currentCar] injectionType] != carburetor){
