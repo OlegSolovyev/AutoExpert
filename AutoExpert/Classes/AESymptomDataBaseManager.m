@@ -8,6 +8,7 @@
 
 #import "AESymptomDataBaseManager.h"
 #import "AEUserDataManager.h"
+#import "AECarsDataBaseManager.h"
 
 #define NEW_SYPMTOM_STRING @"Symptom"
 #define SYMPTOM_INDEX_STRING @"Index:"
@@ -115,7 +116,22 @@ static AESymptomDataBaseManager *sharedDataManager = nil;
 //            NSLog(@"Causes Loaded");
             
             
-            NSArray *models = [[allLinedStrings objectAtIndex:j] componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:SEPARATOR]];
+            NSArray *modelNames = [[allLinedStrings objectAtIndex:j] componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:SEPARATOR]];
+            NSMutableArray *models = [[NSMutableArray alloc] init];
+            if(modelNames.count > 1){
+                
+                for(NSString *modelName in modelNames){
+                    NSString *brand = [[modelName componentsSeparatedByString:@":"] objectAtIndex:0];
+                    NSString *name = [[modelName componentsSeparatedByString:@":"] objectAtIndex:1];
+                    for(AECarModel *model in [[AECarsDataBaseManager sharedManager] models]){
+                        if([model.brand isEqualToString:brand] && [model.name isEqualToString:name]){
+                            [models addObject:model];
+                        }
+                    }
+                }
+            } else{
+                models = [NSMutableArray arrayWithArray:[[AECarsDataBaseManager sharedManager] models]];
+            }
             
             [self.symptoms addObject:[[AESymptom alloc] initWithName:name
                                                                index:index
