@@ -20,200 +20,70 @@ static AECarsDataBaseManager *sharedDataManager = nil;
 
 - (id)init{
     if( self = [super init]){
-        self.modelsArray = [[NSMutableArray alloc] init];
-        for(int i = 0; i < NUMBER_OF_MODELS; ++i){
-            [self.modelsArray addObject:[AECarsDataBaseManager stringForModelIndex:i]];
-        }
+        self.models = [[NSMutableArray alloc] init];
     }
     return self;
 }
 
-+ (CarModelIndex)modelIndexForString:(NSString *)string{
-    CarModelIndex result = 0;
-    for(int i = 0; i < NUMBER_OF_MODELS; ++i){
-        if([string isEqualToString:[AECarsDataBaseManager stringForModelIndex:i]]){
-            result = i;
+- (void)loadModels{
+    NSLog(@"Loading models database..");
+    self.models = [[NSMutableArray alloc] init];
+    
+    NSFileManager *filemgr;
+    filemgr = [NSFileManager defaultManager];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"ModelsBase" ofType:@"txt"];
+    if ([filemgr fileExistsAtPath: path ] == YES)
+        //        NSLog (@"File exists %@", path );
+        ;
+    else
+        NSLog (@"File not found");
+    
+    NSString *dataBase = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+    
+    // first, separate by new line
+    NSArray* allLinedStrings = [dataBase componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+    
+    for(int i = 0; i < [allLinedStrings count]; i++){
+        if([[allLinedStrings objectAtIndex:i] isEqualToString:@"Model"]){
+            int index = [[allLinedStrings objectAtIndex:i + 2] intValue];
+     NSLog(@"index : %d", index);
+            NSString *brand = [allLinedStrings objectAtIndex:i + 4];
+            NSLog(@"Brand %@", brand);
+            NSString *name = [allLinedStrings objectAtIndex:i + 6];
+        NSLog(@"Name : %@",name);
+            
+            int minYear = [[allLinedStrings objectAtIndex:i + 8] intValue];
+            int maxYear = [[allLinedStrings objectAtIndex:i + 10] intValue];
+            
+            NSLog(@"Years: %d - %d", minYear, maxYear);
+            
+            BOOL diesel = [[[[allLinedStrings objectAtIndex:i + 12] componentsSeparatedByString:@";"] objectAtIndex:0] intValue];
+            NSLog(@"%@ Diesel %d", [allLinedStrings objectAtIndex:i + 12], diesel);
+            int dieselYear = [[[[allLinedStrings objectAtIndex:i + 12] componentsSeparatedByString:@";"] objectAtIndex:1] intValue];
+            NSLog(@"Diesel year %d", dieselYear);
+            BOOL gas = [[[[allLinedStrings objectAtIndex:i + 14] componentsSeparatedByString:@";"] objectAtIndex:0] intValue];
+            int gasYear = [[[[allLinedStrings objectAtIndex:i + 14] componentsSeparatedByString:@";"] objectAtIndex:1] intValue];
+            BOOL injector = [[[[allLinedStrings objectAtIndex:i + 16] componentsSeparatedByString:@";"] objectAtIndex:0] intValue];
+            int injectorYear = [[[[allLinedStrings objectAtIndex:i + 16] componentsSeparatedByString:@";"] objectAtIndex:1] intValue];
+            BOOL carburetor = [[[[allLinedStrings objectAtIndex:i + 18] componentsSeparatedByString:@";"] objectAtIndex:0] intValue];
+            int carburetorYear = [[[[allLinedStrings objectAtIndex:i + 18] componentsSeparatedByString:@";"] objectAtIndex:1] intValue];
+            BOOL manual = [[[[allLinedStrings objectAtIndex:i + 20] componentsSeparatedByString:@";"] objectAtIndex:0] intValue];
+            int manualYear = [[[[allLinedStrings objectAtIndex:i + 20] componentsSeparatedByString:@";"] objectAtIndex:1] intValue];
+            BOOL DSG = [[[[allLinedStrings objectAtIndex:i + 22] componentsSeparatedByString:@";"] objectAtIndex:0] intValue];
+            int DSGYear = [[[[allLinedStrings objectAtIndex:i + 22] componentsSeparatedByString:@";"] objectAtIndex:1] intValue];
+            BOOL hydro = [[[[allLinedStrings objectAtIndex:i + 24] componentsSeparatedByString:@";"] objectAtIndex:0] intValue];
+            int hydroYear = [[[[allLinedStrings objectAtIndex:i + 24] componentsSeparatedByString:@";"] objectAtIndex:1] intValue];
+            BOOL variator = [[[[allLinedStrings objectAtIndex:i + 26] componentsSeparatedByString:@";"] objectAtIndex:0] intValue];
+            int variatorYear = [[[[allLinedStrings objectAtIndex:i + 26] componentsSeparatedByString:@";"] objectAtIndex:1] intValue];
+            
+            [self.models addObject:[[AECarModel alloc] initWithModelIndex:index brand:brand name:name minYear:minYear maxYear:maxYear injector:injector injectorYear:injectorYear carburetor:carburetor carburetorYear:carburetorYear gasEngine:gas gasEngineYear:gasYear dieselEngine:diesel dieselEngineYear:dieselYear manualTransmission:manual manualTransmissionYear:manualYear DSG:DSG DSGYear:DSGYear hydroAutomatic:hydro hydroAutomaticYear:hydroYear variator:variator variatorYear:variatorYear]];
+            i += 26;
         }
+        
     }
-    return result;
-}
+    
+    NSLog(@"Models loaded");
 
-+ (NSString *)stringForModelIndex:(CarModelIndex)modelIndex{
-    NSString *result;
-    switch (modelIndex) {
-        case vaz2101:
-            result = [NSString stringWithFormat:@"ВАЗ 2101"];
-            break;
-        case vaz2102:
-            result = [NSString stringWithFormat:@"ВАЗ 2102"];
-            break;
-        case vaz2103:
-            result = [NSString stringWithFormat:@"ВАЗ 2103"];
-            break;
-        case vaz2104:
-            result = [NSString stringWithFormat:@"ВАЗ 2104"];
-            break;
-        case vaz2105:
-            result = [NSString stringWithFormat:@"ВАЗ 2105"];
-            break;
-        case vaz2106:
-            result = [NSString stringWithFormat:@"ВАЗ 2106"];
-            break;
-        case vaz2107:
-            result = [NSString stringWithFormat:@"ВАЗ 2107"];
-            break;
-        case vaz2108:
-            result = [NSString stringWithFormat:@"ВАЗ 2108"];
-            break;
-        case vaz2109:
-            result = [NSString stringWithFormat:@"ВАЗ 2109"];
-            break;
-        case vaz2110:
-            result = [NSString stringWithFormat:@"ВАЗ 2110"];
-            break;
-            
-        default:
-            break;
-    }
-    return result;
-}
-
-+ (int)minYearForModelIndex:(CarModelIndex)modelIndex{
-    int result = 0;
-    switch (modelIndex) {
-        case vaz2101:
-            result = 1970;
-            break;
-        case vaz2102:
-            result = 1971;
-            break;
-        case vaz2103:
-            result = 1973;
-            break;
-        case vaz2104:
-            result = 1984;
-            break;
-        case vaz2105:
-            result = 1979;
-            break;
-        case vaz2106:
-            result = 1976;
-            break;
-        case vaz2107:
-            result = 1982;
-            break;
-        case vaz2108:
-            result = 1984;
-            break;
-        case vaz2109:
-            result = 1987;
-            break;
-        case vaz2110:
-            result = 1995;
-            break;
-            
-        default:
-            break;
-    }
-    return result;
-}
-
-+ (int)maxYearForModelIndex:(CarModelIndex)modelIndex{
-    int result = 0;
-    switch (modelIndex) {
-        case vaz2101:
-            result = 1988;
-            break;
-        case vaz2102:
-            result = 1985;
-            break;
-        case vaz2103:
-            result = 1984;
-            break;
-        case vaz2104:
-            result = 2012;
-            break;
-        case vaz2105:
-            result = 2010;
-            break;
-        case vaz2106:
-            result = 2006;
-            break;
-        case vaz2107:
-            result = 2012;
-            break;
-        case vaz2108:
-            result = 2003;
-            break;
-        case vaz2109:
-            result = 2011;
-            break;
-        case vaz2110:
-            result = 2007;
-            break;
-            
-        default:
-            break;
-    }
-    return result;
-}
-
-+ (BOOL)modelHasInjector:(CarModelIndex)modelIndex{
-    BOOL result = 0;
-    switch (modelIndex) {
-        case vaz2101:
-            result = NO;
-            break;
-        case vaz2102:
-            result = NO;
-            break;
-        case vaz2103:
-            result = NO;
-            break;
-        case vaz2104:
-            result = YES;
-            break;
-        case vaz2105:
-            result = YES;
-            break;
-        case vaz2106:
-            result = NO;
-            break;
-        case vaz2107:
-            result = YES;
-            break;
-        case vaz2108:
-            result = YES;
-            break;
-        case vaz2109:
-            result = YES;
-            break;
-        case vaz2110:
-            result = YES;
-            break;
-            
-        default:
-            break;
-    }
-    return result;
-}
-+ (BOOL)modelHasCarburetor:(CarModelIndex)modelIndex{
-    return YES;
-}
-+ (BOOL)modelHasGasEngine:(CarModelIndex)modelIndex{
-    return YES;
-}
-+ (BOOL)modelHasDieselEngine:(CarModelIndex)modelIndex{
-    return NO;
-}
-+ (BOOL)modelHasAutomaticTransmission:(CarModelIndex)modelIndex{
-    return NO;
-}
-+ (BOOL)modelHasVariatorTransmission:(CarModelIndex)modelIndex{
-    return NO;
-}
-+ (BOOL)modelHasManualTransmission:(CarModelIndex)modelIndex{
-    return YES;
 }
 
 @end

@@ -28,7 +28,7 @@
     self.tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
     [self.scrollView addGestureRecognizer:self.tapRecognizer];
     NSLog(@"Current car: %@", [[AEUserDataManager sharedManager] currentCar].model.name);
-    if([[AEUserDataManager sharedManager] currentCar].model.automaticTransmission
+    if([[AEUserDataManager sharedManager] currentCar].model.DSG
        && [[AEUserDataManager sharedManager] currentCar].model.manualTransmission){
         [self.kppSwitch setEnabled:YES];
         [self.kppLabel setText:KPP_TEXT];
@@ -36,10 +36,10 @@
         [[[AEUserDataManager sharedManager] currentCar] setTransmission:manual];
     } else {
         [self.kppSwitch setEnabled:NO];
-        if([[AEUserDataManager sharedManager] currentCar].model.automaticTransmission){
+        if([[AEUserDataManager sharedManager] currentCar].model.DSG){
             [self.kppLabel setText:AKPP_TEXT];
             [self.kppSwitch setOn:NO];
-            [[[AEUserDataManager sharedManager] currentCar] setTransmission:automatic];
+            [[[AEUserDataManager sharedManager] currentCar] setTransmission:DSG];
         } else{
             [self.kppLabel setText:KPP_TEXT];
             [self.kppSwitch setOn:YES];
@@ -111,7 +111,7 @@
 - (IBAction)kppValueChanged:(id)sender {
     if(![sender isOn]){
         self.kppLabel.text = AKPP_TEXT;
-        [[[AEUserDataManager sharedManager] currentCar] setTransmission:automatic];
+        [[[AEUserDataManager sharedManager] currentCar] setTransmission:DSG];
     } else{
         self.kppLabel.text = KPP_TEXT;
         [[[AEUserDataManager sharedManager] currentCar] setTransmission:manual];

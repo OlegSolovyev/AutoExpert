@@ -111,7 +111,7 @@ typedef enum{
     if(cause.carburetor && car.injectionType != carburetor) result = NO;
     if(cause.gasEngine && car.engine != gasoline) result = NO;
     if(cause.dieselEngine && car.engine != diesel) result = NO;
-    if(cause.automaticTransmission && car.transmission != automatic) result = NO;
+    if(cause.automaticTransmission && (car.transmission != DSG || car.transmission != hydro)) result = NO;
     if(cause.manualTransmission && car.transmission != manual) result = NO;
     
     return result;

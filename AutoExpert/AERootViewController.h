@@ -11,13 +11,12 @@
 @interface AERootViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIPickerView *modelPickerView;
+@property (weak, nonatomic) IBOutlet UIPickerView *brandPickerView;
 @property (weak, nonatomic) IBOutlet UIPickerView *yearPickerView;
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+//@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
+@property (nonatomic, retain) NSMutableArray *brandsArray;
 @property (nonatomic, retain) NSMutableArray *modelsArray;
 @property (nonatomic, retain) NSMutableArray *yearsArray;
-
-@property (nonatomic, retain) NSString *selectedCar;
-@property (nonatomic) int selectedYear;
 
 @end

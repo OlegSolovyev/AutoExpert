@@ -22,8 +22,7 @@ static AEUserDataManager *sharedDataManager = nil;
             [defaults synchronize];
             NSLog(@"Launch number %d", [[defaults objectForKey:@"launchСounter" ] intValue]);
         }
-        AECarModel *model = [[AECarModel alloc] initWithModelIndex:0];
-        self.currentCar = [[AECar alloc] initWithParameters:model engine:0 transmission:0 year:0 distance:0];
+        self.currentCar = [[AECar alloc] initWithParameters:[[[AECarsDataBaseManager sharedManager] models] objectAtIndex:0] engine:0 transmission:0 year:0 distance:0];
         
     }
     return self;
@@ -38,6 +37,7 @@ static AEUserDataManager *sharedDataManager = nil;
 
 + (void)saveData{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:[NSString stringWithFormat:@"%d", [[[AEUserDataManager sharedManager] currentCar] model].index] forKey:@"CurrentCarModelIndex"];
     [defaults setObject:[NSString stringWithFormat:@"%d", [[[AEUserDataManager sharedManager] currentCar] engine]] forKey:@"CurrentCarEngine"];
     [defaults setObject:[NSString stringWithFormat:@"%d", [[[AEUserDataManager sharedManager] currentCar] transmission]] forKey:@"CurrentCarTransmission"];
     [defaults setObject:[NSString stringWithFormat:@"%d", [[[AEUserDataManager sharedManager] currentCar] injectionType]] forKey:@"CurrentCarInjectionType"];
@@ -49,13 +49,15 @@ static AEUserDataManager *sharedDataManager = nil;
 
 - (void)loadData{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    self.currentCar.model =  [[AECarModel alloc] initWithModelIndex:[AECarsDataBaseManager modelIndexForString:[defaults objectForKey:@"CurrentCarModel"]]];
-    self.currentCar.engine = [[defaults objectForKey:@"CurrentCarEngine"] intValue];
-    self.currentCar.transmission = [[defaults objectForKey:@"CurrentCarTransmission"] intValue];
-    self.currentCar.injectionType = [[defaults objectForKey:@"CurrentCarInjectionType"] intValue];
-    self.currentCar.distance = [[defaults objectForKey:@"CurrentCarDistance"] intValue];
-    self.currentCar.year = [[defaults objectForKey:@"CurrentCarYear"] intValue];
-    NSLog(@"Data loaded");
+        if([defaults objectForKey:@"CurrentCarModel"]){
+        self.currentCar.model =  [[[AECarsDataBaseManager sharedManager] models] objectAtIndex:[[defaults objectForKey:@"CurrentCarModel"] intValue]];
+        self.currentCar.engine = [[defaults objectForKey:@"CurrentCarEngine"] intValue];
+        self.currentCar.transmission = [[defaults objectForKey:@"CurrentCarTransmission"] intValue];
+        self.currentCar.injectionType = [[defaults objectForKey:@"CurrentCarInjectionType"] intValue];
+        self.currentCar.distance = [[defaults objectForKey:@"CurrentCarDistance"] intValue];
+        self.currentCar.year = [[defaults objectForKey:@"CurrentCarYear"] intValue];
+        NSLog(@"Data loaded");
+    } else NSLog(@"No data to load");
 }
 
 @end

@@ -22,7 +22,10 @@
         self.causes = [causes sortedArrayUsingSelector:@selector(compareProbability:)];
         self.causes = [causes sortedArrayUsingSelector:@selector(compareLink:)];
         if([models[0] isEqualToString:@"All"]){
-            self.models = [[AECarsDataBaseManager sharedManager] modelsArray];
+            self.models = [[AECarsDataBaseManager sharedManager] models];
+            for(AECarModel *model in self.models){
+                NSLog(@"MODEL: %@", model.name);
+            }
         } else{
             self.models = models;
         }

@@ -11,22 +11,9 @@
 
 @interface AECarsDataBaseManager : NSObject
 
+@property (nonatomic, retain) NSMutableArray *models;
+
 + (id)sharedManager;
-
-+ (NSString *)stringForModelIndex:(CarModelIndex)modelIndex;
-+ (CarModelIndex)modelIndexForString:(NSString *)string;
-
-+ (int)minYearForModelIndex:(CarModelIndex)modelIndex;
-+ (int)maxYearForModelIndex:(CarModelIndex)modelIndex;
-
-+ (BOOL)modelHasInjector:(CarModelIndex)modelIndex;
-+ (BOOL)modelHasCarburetor:(CarModelIndex)modelIndex;
-+ (BOOL)modelHasGasEngine:(CarModelIndex)modelIndex;
-+ (BOOL)modelHasDieselEngine:(CarModelIndex)modelIndex;
-+ (BOOL)modelHasAutomaticTransmission:(CarModelIndex)modelIndex;
-+ (BOOL)modelHasVariatorTransmission:(CarModelIndex)modelIndex;
-+ (BOOL)modelHasManualTransmission:(CarModelIndex)modelIndex;
-
-@property (nonatomic, retain) NSMutableArray *modelsArray;
+- (void)loadModels;
 
 @end

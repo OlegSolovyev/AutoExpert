@@ -16,17 +16,32 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    
+    [[AECarsDataBaseManager sharedManager] loadModels];
+    [[AESymptomDataBaseManager sharedManager] loadSymptoms];
+    
+    self.brandsArray = [[NSMutableArray alloc] init];
     self.modelsArray = [[NSMutableArray alloc] init];
-    self.modelsArray = [[AECarsDataBaseManager sharedManager] modelsArray];
     self.yearsArray = [[NSMutableArray alloc] init];
     
-    for (int i = [AECarsDataBaseManager maxYearForModelIndex:0]; i >= [AECarsDataBaseManager minYearForModelIndex:0]; --i){
+    for(AECarModel *model in [[AECarsDataBaseManager sharedManager] models]){
+        if(![self.brandsArray containsObject:model.brand])[self.brandsArray addObject:model.brand];
+    }
+    
+    for(AECarModel *model in [[AECarsDataBaseManager sharedManager] models]){
+        if([model.brand isEqualToString:[[[[AECarsDataBaseManager sharedManager] models] objectAtIndex:0] brand]]){
+            [self.modelsArray addObject:model.name];
+        }
+    }
+    
+    for (int i = [[[[AECarsDataBaseManager sharedManager] models] objectAtIndex:0] maxYear]; i >= [[[[AECarsDataBaseManager sharedManager] models] objectAtIndex:0] minYear]; --i){
         [self.yearsArray addObject:[NSString stringWithFormat:@"%d", i]];
     }
-    [self.scrollView setScrollEnabled:TRUE];
-    [self.scrollView setContentSize:CGSizeMake(320, 1000)];
     
-    [[AESymptomDataBaseManager sharedManager] loadSymptoms];
+//    [self.scrollView setScrollEnabled:TRUE];
+//    [self.scrollView setContentSize:CGSizeMake(320, 1000)];
+    
+
     
 }
 
@@ -44,8 +59,10 @@
 {
     if([pickerView isEqual:self.yearPickerView]){
         return [self.yearsArray count];
+    } else if([pickerView isEqual:self.brandPickerView]){
+        return [self.brandsArray count];
     } else{
-        return [self.modelsArray count];  // returns the number of rows in each component..
+        return [self.modelsArray count];
     }
 }
 
@@ -59,6 +76,8 @@
 {
     if([pickerView isEqual:self.yearPickerView]){
         return [self.yearsArray objectAtIndex:row];
+    } else if([pickerView isEqual:self.brandPickerView]){
+        return [self.brandsArray objectAtIndex:row];
     } else{
         return [self.modelsArray objectAtIndex:row];
     }
@@ -68,13 +87,26 @@
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
     if([pickerView isEqual:self.yearPickerView]){
-        self.selectedYear = [[self.yearsArray objectAtIndex:row] intValue];
-        [[[AEUserDataManager sharedManager] currentCar] setYear:self.selectedYear];
+        [[[AEUserDataManager sharedManager] currentCar] setYear:[[self.yearsArray objectAtIndex:row] intValue]];
+    } else if([pickerView isEqual:self.brandPickerView]){
+        [self.modelsArray removeAllObjects];
+        for(AECarModel *model in [[AECarsDataBaseManager sharedManager] models]){
+            if([model.brand isEqualToString:[self.brandsArray objectAtIndex:row]]){
+                [self.modelsArray addObject:model.name];
+            }
+            
+            [self.modelPickerView reloadAllComponents];
+        }
     } else{
-        self.selectedCar = [self.modelsArray objectAtIndex:row];
-        [[[AEUserDataManager sharedManager] currentCar] setModel:[[AECarModel alloc] initWithModelIndex:[AECarsDataBaseManager modelIndexForString: self.selectedCar]]];
+        for(AECarModel *model in [[AECarsDataBaseManager sharedManager] models]){
+            if([model.brand isEqualToString:[self.brandsArray objectAtIndex:[self.brandPickerView selectedRowInComponent:0]]]
+               && [model.name isEqualToString:[self.modelsArray objectAtIndex:[self.modelPickerView selectedRowInComponent:0]]]){
+                [[[AEUserDataManager sharedManager] currentCar] setModel:model];
+                break;
+            }
+        }
         [self.yearsArray removeAllObjects];
-        for (int i = [AECarsDataBaseManager maxYearForModelIndex:[AECarsDataBaseManager modelIndexForString:self.selectedCar]]; i >= [AECarsDataBaseManager minYearForModelIndex:[AECarsDataBaseManager modelIndexForString:self.selectedCar]]; --i){
+        for (int i = [[[AEUserDataManager sharedManager] currentCar] model].maxYear; i >= [[[AEUserDataManager sharedManager] currentCar] model].minYear; --i){
             [self.yearsArray addObject:[NSString stringWithFormat:@"%d", i]];
         }
         [self.yearPickerView reloadAllComponents];

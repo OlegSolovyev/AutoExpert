@@ -42,6 +42,9 @@ typedef enum{
     } else {
         [self switchToSymptomCategorySelect];
     }
+    self.isSearching = NO;
+    [self.searchBar resignFirstResponder];
+    [self.searchBar setText:@""];
 }
 
 - (void)searchForSymptom:(NSString *)symptomString{
@@ -77,8 +80,7 @@ typedef enum{
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    NSLog(@"Text did change");
-    //Remove all objects first.
+//    NSLog(@"Text did change");
     [self.searchResults removeAllObjects];
     
     if([searchText length] != 0) {
@@ -109,7 +111,7 @@ typedef enum{
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
-    NSLog(@"Cancel clicked");
+//    NSLog(@"Cancel clicked");
     [self.searchBar setText:@""];
     [self.searchResults removeAllObjects];
     [self.searchBar resignFirstResponder];
@@ -117,19 +119,19 @@ typedef enum{
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-    NSLog(@"Search Clicked");
+//    NSLog(@"Search Clicked");
     [self searchForSymptom:searchBar.text];
     [self.searchBar resignFirstResponder];
 }
 
 - (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar {
-    NSLog(@"Should end editing");
+//    NSLog(@"Should end editing");
     [searchBar resignFirstResponder];
     return YES;
 }
 
 - (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
-    NSLog(@"Did end editing");
+//    NSLog(@"Did end editing");
     [searchBar resignFirstResponder];
     if([searchBar.text isEqualToString:@""])self.isSearching = NO;
 }
@@ -152,9 +154,9 @@ typedef enum{
 - (void)switchToSymptomSelect{
     [self.questionLabel setText:@"Выберите симптом"];
     [self.answers removeAllObjects];
-    NSString *modelName = [[[[AEUserDataManager sharedManager] currentCar] model] name];
+
     for(AESymptom *symptom in [[AESymptomDataBaseManager sharedManager] symptomsForCategoryIndex:[[AEUserDataManager sharedManager] selectedSymptomCategoryIndex]]){
-        if([symptom.models containsObject:modelName]){
+        if([symptom.models containsObject:[[[AEUserDataManager sharedManager] currentCar] model]]){
             [self.answers addObject:symptom.name];
         }
     }

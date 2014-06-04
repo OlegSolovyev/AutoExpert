@@ -15,7 +15,8 @@ typedef enum{
 
 typedef enum{
     manual,
-    automatic,
+    DSG,
+    hydro,
     variator
 } TranmissionType;
 
@@ -24,37 +25,54 @@ typedef enum{
     injector
 } InjectionType;
 
-typedef enum{
-    vaz2101,
-    vaz2102,
-    vaz2103,
-    vaz2104,
-    vaz2105,
-    vaz2106,
-    vaz2107,
-    vaz2108,
-    vaz2109,
-    vaz2110,
-} CarModelIndex;
-
 #define NUMBER_OF_MODELS 10
 
 @interface AECarModel : NSObject
 
+@property (nonatomic, retain) NSString *brand;
 @property (nonatomic, retain) NSString *name;
-@property (nonatomic) CarModelIndex index;
+@property (nonatomic) int index;
 
 @property (nonatomic) int minYear;
 @property (nonatomic) int maxYear;
 
 @property (nonatomic) BOOL injector;
+@property (nonatomic) int injectorYear;
 @property (nonatomic) BOOL carburetor;
+@property (nonatomic) int carburetorYear;
 @property (nonatomic) BOOL gasEngine;
+@property (nonatomic) int gasEngineYear;
 @property (nonatomic) BOOL dieselEngine;
-@property (nonatomic) BOOL automaticTransmission;
+@property (nonatomic) int dieselEngineYear;
+@property (nonatomic) BOOL DSG;
+@property (nonatomic) int DSGYear;
+@property (nonatomic) BOOL hydroAutomatic;
+@property (nonatomic) int hydroAutomaticYear;
 @property (nonatomic) BOOL variatorTransmission;
+@property (nonatomic) int variatorYear;
 @property (nonatomic) BOOL manualTransmission;
+@property (nonatomic) int manualTransmissionYear;
 
-- (id)initWithModelIndex:(CarModelIndex)modelIndex;
+- (id)initWithModelIndex:(int)modelIndex
+                   brand:(NSString *)brand
+                    name:(NSString *)name
+                 minYear:(int)minYear
+                 maxYear:(int)maxYear
+                injector:(BOOL)injector
+            injectorYear:(int)injectorYear
+              carburetor:(BOOL)carburetor
+          carburetorYear:(int)carburetorYear
+               gasEngine:(BOOL)gasEngine
+           gasEngineYear:(int)gasEngineYear
+            dieselEngine:(BOOL)dieselEngine
+        dieselEngineYear:(int)dieselEngineYear
+      manualTransmission:(BOOL)manualTransmission
+  manualTransmissionYear:(int)manualTransmissionYear
+                     DSG:(BOOL)DSG
+                 DSGYear:(int)DSGYear
+          hydroAutomatic:(BOOL)hydroAutomatic
+      hydroAutomaticYear:(int)hydroAutomaticYear
+                variator:(BOOL)variator
+            variatorYear:(int)variatorYear;
 
 @end
