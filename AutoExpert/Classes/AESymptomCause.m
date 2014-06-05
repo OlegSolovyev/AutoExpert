@@ -7,6 +7,7 @@
 //
 
 #import "AESymptomCause.h"
+#import "AEUserDataManager.h"
 
 #define CAUSE_TAG_AKPP @"АКПП"
 #define CAUSE_TAG_RKPP @"РКПП"
@@ -15,6 +16,10 @@
 #define CAUSE_TAG_CARBURETOR @"Карбюратор"
 #define CAUSE_TAG_GAS_ENGINE @"Бензин"
 #define CAUSE_TAG_DIESEL_ENGINE @"Дизель"
+
+#define CAUSE_FACTOR_WAY @"Пробег"
+#define CAUSE_FACTOR_WAY_SINCE_SERVICE @"ТО"
+#define CAUSE_FACTOR_YEAR @"Год"
 
 @implementation AESymptomCause
 - (id)initWithName:(NSString *)name
@@ -40,6 +45,23 @@
         for(NSString *factor in factors){
             NSLog(@"Factor: %@", factor);
         }
+        if(factors){
+            for(NSString *factor in factors){
+                if([factor isEqualToString:CAUSE_FACTOR_WAY]){
+                    self.probability = self.probability * [[[AEUserDataManager sharedManager] currentCar] distance] / 200000.;
+                } else if([factor isEqualToString:CAUSE_FACTOR_WAY_SINCE_SERVICE]){
+                    self.probability = self.probability * [[[AEUserDataManager sharedManager] currentCar] distanceSinceService] / 15000.;
+                } else if([factor isEqualToString:CAUSE_FACTOR_YEAR]){
+                    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+                    [formatter setDateFormat:@"yyyy"];
+                    NSString *yearString = [formatter stringFromDate:[NSDate date]];
+                    
+                    self.probability = self.probability * ([yearString intValue] - [[[AEUserDataManager sharedManager] currentCar] year]) / 20;
+                } else{
+                    NSLog(@"ERROR: Unknown factor");
+                }
+            }
+        }
         
         if(tags){
             for(NSString *tag in tags){
@@ -58,6 +80,8 @@
                     self.gasEngine = TRUE;
                 } else if([tag isEqualToString:CAUSE_TAG_DIESEL_ENGINE]){
                     self.dieselEngine = TRUE;
+                } else{
+                    NSLog(@"ERROR: Unknown tag");
                 }
             }
         }

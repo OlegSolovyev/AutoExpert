@@ -15,7 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *engineLabel;
 @property (weak, nonatomic) IBOutlet UILabel *wayLabel;
 @property (weak, nonatomic) IBOutlet UITextField *wayTextField;
-@property (weak, nonatomic) IBOutlet UITextField *waySinceTOfield;
+@property (weak, nonatomic) IBOutlet UITextField *waySinceServiceField;
 @property (weak, nonatomic) IBOutlet UISwitch *kppSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *injectorSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *engineSwitch;

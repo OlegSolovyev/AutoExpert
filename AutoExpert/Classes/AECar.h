@@ -18,6 +18,7 @@
 @property (nonatomic) TranmissionType transmission;
 @property (nonatomic) int year;
 @property (nonatomic) int distance;
+@property (nonatomic) int distanceSinceService;
 
 - (id)initWithParameters:(AECarModel *)model
                   engine:(EngineType)engine

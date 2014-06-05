@@ -32,7 +32,7 @@ typedef enum{
     [self switchToSymptomCategorySelect];
     self.searchResults = [[NSMutableArray alloc] init];
     [self.searchBar setShowsCancelButton:NO];
-    
+    NSLog(@"Current car way: %d Since TO: %d", [[[AEUserDataManager sharedManager] currentCar] distance], [[[AEUserDataManager sharedManager] currentCar] distanceSinceService]);
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"< Назад" style:UIBarButtonItemStylePlain target:self action:@selector(backButtonAction:)];
 }
 

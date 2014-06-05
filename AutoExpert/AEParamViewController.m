@@ -119,7 +119,11 @@
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField{
-    [[[AEUserDataManager sharedManager] currentCar] setDistance:[self.wayTextField.text intValue]];
+    if([textField isEqual:self.wayTextField]){
+        [[[AEUserDataManager sharedManager] currentCar] setDistance:[self.wayTextField.text intValue]];
+    } else{
+        [[[AEUserDataManager sharedManager] currentCar] setDistanceSinceService:[self.waySinceServiceField.text intValue]];
+    }
 }
 
 @end
