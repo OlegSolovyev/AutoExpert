@@ -502,3 +502,31 @@ Hydro:
 0;0
 Variator:
 0;0
+
+Model
+Index:
+18
+Brand:
+Renault
+Name:
+Megane 2
+Min Year:
+2002
+Max Year:
+0
+Diesel:
+1;0
+Gas:
+1;0
+Injector:
+1;0
+Carburetor:
+0;0
+Manual Transmission:
+1;0
+DSG:
+0;0
+Hydro:
+1;0
+Variator:
+0;0
