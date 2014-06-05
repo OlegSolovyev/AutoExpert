@@ -34,6 +34,9 @@
         }
     }
     
+    self.brandsArray = [NSMutableArray arrayWithArray:[self.brandsArray sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)]];
+    self.modelsArray = [NSMutableArray arrayWithArray:[self.modelsArray sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)]];
+    
     for (int i = [[[[AECarsDataBaseManager sharedManager] models] objectAtIndex:0] maxYear]; i >= [[[[AECarsDataBaseManager sharedManager] models] objectAtIndex:0] minYear]; --i){
         [self.yearsArray addObject:[NSString stringWithFormat:@"%d", i]];
     }

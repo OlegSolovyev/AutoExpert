@@ -530,3 +530,87 @@ Hydro:
 1;0
 Variator:
 0;0
+
+Model
+Index:
+19
+Brand:
+ГАЗ
+Name:
+3110
+Min Year:
+1996
+Max Year:
+2005
+Diesel:
+1;0
+Gas:
+1;0
+Injector:
+1;0
+Carburetor:
+1;0
+Manual Transmission:
+1;0
+DSG:
+0;0
+Hydro:
+0;0
+Variator:
+0;0
+
+Model
+Index:
+20
+Brand:
+ГАЗ
+Name:
+3302
+Min Year:
+1994
+Max Year:
+0
+Diesel:
+1;0
+Gas:
+1;0
+Injector:
+1;0
+Carburetor:
+1;0
+Manual Transmission:
+1;0
+DSG:
+0;0
+Hydro:
+0;0
+Variator:
+0;0
+
+Model
+Index:
+21
+Brand:
+УАЗ
+Name:
+Hunter 
+Min Year:
+2003
+Max Year:
+0
+Diesel:
+1;0
+Gas:
+1;0
+Injector:
+1;0
+Carburetor:
+1;0
+Manual Transmission:
+1;0
+DSG:
+0;0
+Hydro:
+0;0
+Variator:
+0;0

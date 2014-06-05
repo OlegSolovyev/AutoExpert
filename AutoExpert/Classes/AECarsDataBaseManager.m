@@ -57,6 +57,8 @@ static AECarsDataBaseManager *sharedDataManager = nil;
             
             NSLog(@"Years: %d - %d", minYear, maxYear);
             
+
+            
             BOOL diesel = [[[[allLinedStrings objectAtIndex:i + 12] componentsSeparatedByString:@";"] objectAtIndex:0] intValue];
             NSLog(@"%@ Diesel %d", [allLinedStrings objectAtIndex:i + 12], diesel);
             int dieselYear = [[[[allLinedStrings objectAtIndex:i + 12] componentsSeparatedByString:@";"] objectAtIndex:1] intValue];
