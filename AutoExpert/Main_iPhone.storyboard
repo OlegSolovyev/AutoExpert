@@ -50,6 +50,7 @@
                     <navigationItem key="navigationItem" title="Неисправность" id="Yt7-qr-DHd">
                         <barButtonItem key="backBarButtonItem" title="Назад" id="1PZ-bM-6c0"/>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="questionLabel" destination="1N3-v8-gpR" id="ula-Xn-88W"/>
                         <outlet property="searchBar" destination="3dZ-Sm-Snw" id="Wj1-L9-78T"/>
@@ -158,11 +159,11 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="KVm-AP-yaZ">
-                                <rect key="frame" x="0.0" y="64" width="320" height="492"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="556"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Klz-o3-YRm">
-                                        <rect key="frame" x="111" y="295" width="98" height="51"/>
+                                        <rect key="frame" x="110" y="361" width="98" height="51"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="Далее">
@@ -174,61 +175,77 @@
                                         </connections>
                                     </button>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="Whc-ne-gZu">
-                                        <rect key="frame" x="229" y="81" width="51" height="31"/>
+                                        <rect key="frame" x="228" y="200" width="51" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <connections>
                                             <action selector="kppValueChanged:" destination="dee-5I-aDs" eventType="valueChanged" id="XnF-vE-7GO"/>
                                         </connections>
                                     </switch>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="АКПП" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0v5-NG-I2C">
-                                        <rect key="frame" x="45" y="86" width="52" height="21"/>
+                                        <rect key="frame" x="44" y="205" width="52" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.069818213579999996" green="0.057931628079999999" blue="0.29474249479999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Инжектор" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Mn3-8w-GMo">
-                                        <rect key="frame" x="45" y="141" width="144" height="21"/>
+                                        <rect key="frame" x="44" y="260" width="144" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.069818213579999996" green="0.057931628079999999" blue="0.29474249479999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="egL-gp-xcf">
-                                        <rect key="frame" x="229" y="136" width="51" height="31"/>
+                                        <rect key="frame" x="228" y="255" width="51" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <connections>
                                             <action selector="injectorValueChanged:" destination="dee-5I-aDs" eventType="valueChanged" id="Kzi-2T-PSY"/>
                                         </connections>
                                     </switch>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Бензиновый двигатель" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YWW-wV-YSX">
-                                        <rect key="frame" x="45" y="187" width="164" height="47"/>
+                                        <rect key="frame" x="44" y="306" width="164" height="47"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.069818213579999996" green="0.057931628079999999" blue="0.29474249479999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="QYc-qi-sqm">
-                                        <rect key="frame" x="229" y="195" width="51" height="31"/>
+                                        <rect key="frame" x="228" y="314" width="51" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <connections>
                                             <action selector="engineValueChanged:" destination="dee-5I-aDs" eventType="valueChanged" id="CmJ-gc-dor"/>
                                         </connections>
                                     </switch>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Пробег (км)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yTe-Mh-ptS">
-                                        <rect key="frame" x="44" y="18" width="97" height="21"/>
+                                        <rect key="frame" x="44" y="82" width="97" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.069818213579999996" green="0.057931628079999999" blue="0.29474249479999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="2bu-bP-Afn">
-                                        <rect key="frame" x="164" y="14" width="136" height="30"/>
+                                        <rect key="frame" x="164" y="78" width="136" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         <connections>
                                             <outlet property="delegate" destination="dee-5I-aDs" id="BJO-tV-bqA"/>
+                                        </connections>
+                                    </textField>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Пробег после ТО (км)" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fOV-g9-4Zu">
+                                        <rect key="frame" x="31" y="130" width="110" height="43"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.069818213579999996" green="0.057931628079999999" blue="0.29474249479999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="Uqz-YC-ags">
+                                        <rect key="frame" x="164" y="137" width="136" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="dee-5I-aDs" id="ewZ-db-wqn"/>
                                         </connections>
                                     </textField>
                                 </subviews>
@@ -238,6 +255,7 @@
                         <color key="backgroundColor" red="0.94723622279999997" green="0.98212790890000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Параметры" id="1cY-bW-anF"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="engineLabel" destination="YWW-wV-YSX" id="7Qj-tq-FeL"/>
                         <outlet property="engineSwitch" destination="QYc-qi-sqm" id="yLV-gD-efr"/>
@@ -247,6 +265,7 @@
                         <outlet property="kppSwitch" destination="Whc-ne-gZu" id="xdp-xQ-rue"/>
                         <outlet property="scrollView" destination="KVm-AP-yaZ" id="AIT-91-B4e"/>
                         <outlet property="wayLabel" destination="yTe-Mh-ptS" id="E4k-sz-8oW"/>
+                        <outlet property="waySinceTOfield" destination="Uqz-YC-ags" id="tta-uc-VYf"/>
                         <outlet property="wayTextField" destination="2bu-bP-Afn" id="KMQ-2c-obm"/>
                     </connections>
                 </viewController>
@@ -302,6 +321,7 @@
                         <color key="backgroundColor" red="0.95208956963655511" green="0.98254010853650164" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Ваше авто" id="4KZ-IE-3RW"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="brandPickerView" destination="A3P-lu-14s" id="U0t-hY-GJT"/>
                         <outlet property="modelPickerView" destination="vNd-jt-kuE" id="bse-E3-xWF"/>

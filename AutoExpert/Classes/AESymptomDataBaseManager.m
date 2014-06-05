@@ -261,9 +261,9 @@ static AESymptomDataBaseManager *sharedDataManager = nil;
 
 - (NSMutableArray *)allSymptomsForCurrentCar{
     NSMutableArray *result = [[NSMutableArray alloc] init];
-    NSLog(@"-allSymptoms");
+//    NSLog(@"-allSymptoms");
     for(AESymptom *symptom in self.symptoms){
-        if([symptom.models containsObject:[[[[AEUserDataManager sharedManager] currentCar] model] name]]
+        if([symptom.models containsObject:[[[AEUserDataManager sharedManager] currentCar] model]]
            && [self symptomCategoryIsValidForCar:symptom.categoryIndex]){
             [result addObject:symptom];
         }

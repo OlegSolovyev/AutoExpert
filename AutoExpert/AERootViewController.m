@@ -105,17 +105,10 @@
 
 - (void)updateModelsView:(int)row{
     [self.modelsArray removeAllObjects];
+    
     for(AECarModel *model in [[AECarsDataBaseManager sharedManager] models]){
         if([model.brand isEqualToString:[self.brandsArray objectAtIndex:row]]){
             [self.modelsArray addObject:model.name];
-        }
-    }
-    
-    for(AECarModel *model in [[AECarsDataBaseManager sharedManager] models]){
-        if([model.brand isEqualToString:[self.brandsArray objectAtIndex:[self.brandPickerView selectedRowInComponent:0]]]
-           && [model.name isEqualToString:[self.modelsArray objectAtIndex:[self.modelPickerView selectedRowInComponent:0]]]){
-            [[[AEUserDataManager sharedManager] currentCar] setModel:model];
-            break;
         }
     }
     
@@ -125,6 +118,16 @@
 
 - (void)updateYearsView{
     [self.yearsArray removeAllObjects];
+    
+    for(AECarModel *model in [[AECarsDataBaseManager sharedManager] models]){
+        if([model.brand isEqualToString:[self.brandsArray objectAtIndex:[self.brandPickerView selectedRowInComponent:0]]]
+           && [model.name isEqualToString:[self.modelsArray objectAtIndex:[self.modelPickerView selectedRowInComponent:0]]]){
+            [[[AEUserDataManager sharedManager] currentCar] setModel:model];
+            break;
+        }
+    }
+
+    
     for (int i = [[[AEUserDataManager sharedManager] currentCar] model].maxYear; i >= [[[AEUserDataManager sharedManager] currentCar] model].minYear; --i){
         [self.yearsArray addObject:[NSString stringWithFormat:@"%d", i]];
     }
